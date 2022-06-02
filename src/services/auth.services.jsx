@@ -1,7 +1,7 @@
 import service from "./config.services";
 
 const signupService = (user) => {
-    return service.post("/auth/signup", user)
+    return service.post("auth/signup", user)
 }
 
 const loginService = (user) => {
