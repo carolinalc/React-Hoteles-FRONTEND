@@ -6,7 +6,7 @@ import { addNewHotelService } from '../../services/hotels.services'
 function CreateHotel() {
   const [ nombre, setNombre ] = useState("")
   const [ estrellas, setEstrellas ] = useState("")
-  const [ image, setImage ] = useState("")
+  // const [ imagen, setImagen ] = useState("")
   const [ categorias, setCategorias ] = useState("")
   const [ ubicacion, setUbicacion ] = useState("")
   const [ precios, setPrecios ] = useState(0)
@@ -17,8 +17,8 @@ function CreateHotel() {
 
   const handleNameChange = (e) => setNombre(e.target.value);
   const handleEstrellasChange = (e) => setEstrellas(e.target.value);
-  const handleImageChange = (e) => setImage(e.target.value);
   const handleCategoriasChange = (e) => setCategorias(e.target.value);
+  // const handleImagenChange = (e) => setImagen(e.target.value);
   const handleUbicacionChange = (e) => setUbicacion(e.target.value);
   const handlePreciosChange = (e) => setPrecios(e.target.value);
   const handlePensionChange = (e) => setPension(e.target.value);
@@ -33,7 +33,7 @@ function CreateHotel() {
       const newHotel = {
         nombre, 
         estrellas, 
-        image,
+        // imagen,
         categorias, 
         ubicacion, 
         precios, 
@@ -42,7 +42,7 @@ function CreateHotel() {
       }
 
       await addNewHotelService(newHotel)
-      navigate("/Hotels")
+      navigate("/hotels")
 
     } catch (error) {
       navigate("/error")
@@ -102,14 +102,14 @@ function CreateHotel() {
            value={descripcion} 
            />
            <br />
-           <label htmlFor="image">Image: </label>
-          <input type="text"
-           name='image'
-           onChange={handleImageChange}
-           value={image} 
-           />
+           {/* <label htmlFor="imagen">Image: </label>
+           <input type="text"
+           name='imagen'
+           onChange={handleImagenChange}
+           value={falta imagen} 
+           />  */}
 
-           <button type='submit'> Crear </button>
+           <button type='submit'> Create</button>
       </form> 
     </div>
   )

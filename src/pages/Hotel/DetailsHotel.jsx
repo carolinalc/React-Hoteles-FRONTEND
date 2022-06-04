@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { DotLoader } from 'react-spinners'
-import { getHotelDetailsService, deleteHotelService } from '../../services/hotels.services'
+import EditHotel from '../../components/EditHotel'
+import { getHotelDetailsService, deleteHotelService } from "../../services/hotels.services"
 
 function DetailsHotel() {
 
   const [deatils, setDetails ] = useState(null)
+  const [ showList, setShowList ] = useState(false)
   const { id } = useParams()
 
   const navigate = useNavigate()
@@ -28,16 +30,23 @@ function DetailsHotel() {
   const handleDelete = async () => {
     try {
       await deleteHotelService(id)
-      navigate("/Hotels")
+      navigate("/hotels")
 
     } catch (error) {
       navigate("/error")
     }
   }
+
+  const handleShow = ()=> {
+    setShowList(!showList)
+   
+  }
   
   if(deatils === null){
     return <DotLoader />
   }
+
+
 
   return (
     <div>
@@ -58,6 +67,10 @@ function DetailsHotel() {
       <p>{deatils.decripcion}</p>
       <br />
       <button onClick={handleDelete}> Delete </button>
+      <br />
+
+      <button onClick={handleShow}> Edit </button>
+      { showList === true && <EditHotel /> } 
     </div>
   )
 }

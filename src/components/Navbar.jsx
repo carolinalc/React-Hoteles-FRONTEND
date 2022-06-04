@@ -30,6 +30,8 @@ function Navbar() {
           <NavLink to="/" >Home </NavLink>
           <NavLink to="/About" >About </NavLink>
           <NavLink to="/Hotels" >Hoteles </NavLink>
+          <NavLink to="/signup" > Signup </NavLink>
+          <NavLink to="/login" >Login </NavLink>
         </nav>
       )
       }

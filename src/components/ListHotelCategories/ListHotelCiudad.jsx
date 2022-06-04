@@ -31,7 +31,14 @@ function ListHotelCiudad() {
 
   return (
     <div>
-        <NavLink to={`/Hotels/${detalleCiudad.id}`}> <li>{detalleCiudad.nombre} </li></NavLink>
+      {
+        detalleCiudad.map((eachCiudad) => {
+          return (
+            <NavLink to={`/Hotels/${eachCiudad._id}`}> <li>{eachCiudad.nombre} </li></NavLink>
+          )        
+        })
+      }
+        
     </div> 
   )
 }

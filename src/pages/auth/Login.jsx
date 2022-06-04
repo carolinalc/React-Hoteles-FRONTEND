@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { loginService } from "../../services/auth.services"
 
 import { AuthContext } from "../../context/auth.context.jsx";
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 
 function Login() {
@@ -70,6 +70,12 @@ function Login() {
 
         <button type="submit">Login</button>
       </form>
+      <div>
+          <h4> If you don´t have account, signup here </h4>
+          <Link to="/Hotels/signup"><button type="submit"> Signup </button></Link>
+        
+      </div>
+             
     </div>
   )
 }
