@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import { signupService } from "../services/auth.services.jsx"
+import { signupService } from "../../services/auth.services.jsx"
 import { useNavigate } from "react-router-dom"
 
 function Signup() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [DOB, setDOB ] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
 
@@ -16,7 +15,6 @@ function Signup() {
 
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
-  const handleDOBChange = (e) => setDOB(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const handlePassword2Change = (e) => setPassword2(e.target.value);
 
@@ -65,16 +63,8 @@ function Signup() {
           value={email}
           onChange={handleEmailChange}
         />
-     <br />
-     <label>Date of Birth</label>
-     <input
-          type="date"
-          name="DOB"
-          value={DOB}
-          onChange={handleDOBChange}
-        />
     <br />
-        <label>Confirm password:</label>
+        <label>Password:</label>
         <input
           type="password"
           name="password"
@@ -82,7 +72,7 @@ function Signup() {
           onChange={handlePasswordChange}
         />
     <br />
-        <label>Password:</label>
+        <label>Confirm password:</label>
         <input
           type="password"
           name="password2"
