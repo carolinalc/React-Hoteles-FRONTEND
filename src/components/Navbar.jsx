@@ -7,6 +7,10 @@ import { AuthContext } from "../context/auth.context"
 
 function Navbar() {
 
+<<<<<<< HEAD
+
+  
+=======
     const {  isLogging, authenticateUser } = useContext(AuthContext)
 
     const handleLogout = () => {
@@ -15,6 +19,7 @@ function Navbar() {
     }
 
 
+>>>>>>> 9a4ffe9e20a9dba8020b62e2df0ca48141ad8ee9
   return (
     <div>
       { isLogging === true ? (
