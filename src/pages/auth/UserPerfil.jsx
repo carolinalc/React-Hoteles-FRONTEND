@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { DotLoader } from 'react-spinners';
+import AdminBooking from '../../components/Profile/AdminBooking';
 import { getProfileData } from "../../services/profile.services"
 
 
@@ -39,8 +40,11 @@ function UserPerfil() {
               <p>Name: {user.username}</p>
               <br />
               <p>Email: {user.email}</p>
+        <br />
+        <AdminBooking /> 
     </div>
   )
 }
+
 
 export default UserPerfil

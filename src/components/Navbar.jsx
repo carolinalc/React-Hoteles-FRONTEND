@@ -7,10 +7,6 @@ import { AuthContext } from "../context/auth.context"
 
 function Navbar() {
 
-<<<<<<< HEAD
-
-  
-=======
     const {  isLogging, authenticateUser } = useContext(AuthContext)
 
     const handleLogout = () => {
@@ -19,22 +15,21 @@ function Navbar() {
     }
 
 
->>>>>>> 9a4ffe9e20a9dba8020b62e2df0ca48141ad8ee9
   return (
     <div>
       { isLogging === true ? (
         <nav>
           <NavLink to="/" >Home </NavLink>
-          <NavLink to="/About" >About </NavLink>
-          <NavLink to="/Hotels" >Hoteles </NavLink>
-          <NavLink to="/Profile" >Perfil </NavLink>
+          <NavLink to="/about" >About </NavLink>
+          <NavLink to="/hotels" >Hoteles </NavLink>
+          <NavLink to="/profile" >Perfil </NavLink>
           <button onClick={handleLogout}>Logout</button>
         </nav>
       ): (
         <nav>
           <NavLink to="/" >Home </NavLink>
-          <NavLink to="/About" >About </NavLink>
-          <NavLink to="/Hotels" >Hoteles </NavLink>
+          <NavLink to="/about" >About </NavLink>
+          <NavLink to="/hotels" >Hoteles </NavLink>
           <NavLink to="/signup" > Signup </NavLink>
           <NavLink to="/login" >Login </NavLink>
         </nav>

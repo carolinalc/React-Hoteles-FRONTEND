@@ -30,7 +30,7 @@ function Login() {
 
       localStorage.setItem("authToken", response.data.authToken)
       authenticateUser()
-      navigate("/Hotels")
+      navigate("/hotels")
 
 
     } catch (error){
@@ -72,7 +72,7 @@ function Login() {
       </form>
       <div>
           <h4> If you don´t have account, signup here </h4>
-          <Link to="/Hotels/signup"><button type="submit"> Signup </button></Link>
+          <Link to="/hotels/signup"><button type="submit"> Signup </button></Link>
         
       </div>
              

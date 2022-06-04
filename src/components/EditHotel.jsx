@@ -43,7 +43,7 @@ function EditHotel() {
 
     
       await editHotelService(id, editHotel)
-      Navigate(`/Hotels/${id}`)
+      Navigate(`/hotels/${id}`)
 
     }catch (error) {
       navigate("/error")

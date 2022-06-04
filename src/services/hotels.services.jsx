@@ -1,5 +1,9 @@
 import service from "./config.services";
 
+const getCategoriesPension = () => {
+    return service.get("/hotels/selectores")
+}
+
 const getAllHotelService = () => {
     return service.get("/hotels")
 }
@@ -35,4 +39,4 @@ const deleteHotelService = (id) => {
 }
 
 
-export { getAllHotelService, getCiudadService, getResortService, getRuralService, getTematicoService, addNewHotelService, getHotelDetailsService, editHotelService, deleteHotelService }
+export { getAllHotelService, getCiudadService, getResortService, getRuralService, getTematicoService, addNewHotelService, getHotelDetailsService, editHotelService, deleteHotelService,  getCategoriesPension }

@@ -8,6 +8,7 @@ function AuthWrapper(props){
     const [ isLogging, setIsLogging ] = useState(false)
     const [ user, setUser ] = useState(null)
     const [ isLoading, setIsLoading ] = useState(true)
+    const [ isAdm, setIsAdm ] = useState(false)
 
     const authenticateUser = async () => {
         setIsLoading(true)
@@ -19,19 +20,22 @@ function AuthWrapper(props){
             setIsLogging(true)
             setUser(response.data)
             setIsLoading(false)
+            setIsAdm(true)
 
         }catch(error){
             console.log("El usuario no tiene token o no es válido")
             setIsLogging(false)
             setUser(null)
             setIsLoading(false)
+            setIsAdm(false)
         }
     }
 
     const passedContext = {
         isLogging,
         user,
-        authenticateUser
+        authenticateUser,
+        isAdm
     }
 
     useEffect(()=>{

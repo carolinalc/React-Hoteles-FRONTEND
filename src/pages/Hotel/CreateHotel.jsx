@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom"
-import { addNewHotelService } from '../../services/hotels.services'
+import { addNewHotelService,  getCategoriesPension } from '../../services/hotels.services'
 
 
 function CreateHotel() {
+
+  const [hotel, setHotel ] = useState([])
+
   const [ nombre, setNombre ] = useState("")
   const [ estrellas, setEstrellas ] = useState("")
   // const [ imagen, setImagen ] = useState("")
@@ -24,6 +27,21 @@ function CreateHotel() {
   const handlePensionChange = (e) => setPension(e.target.value);
   const handleDescripcionChange = (e) => setDescripcion(e.target.value);
 
+//Mostrar categorias de la sección select
+  useEffect(() => {
+    mostrarCategories()
+  },[])
+
+  const mostrarCategories = async () => {
+      try {
+        const response = await  getCategoriesPension()
+        setHotel(response.data)
+        console.log(response.data)
+      } catch (error) {
+        navigate("/error")
+      }
+  }
+
   const handleSubmit = async (e) => {
 
     e.preventDefault()
@@ -41,6 +59,7 @@ function CreateHotel() {
         descripcion
       }
 
+      
       await addNewHotelService(newHotel)
       navigate("/hotels")
 
@@ -48,6 +67,7 @@ function CreateHotel() {
       navigate("/error")
     }
   }
+
 
   return (
     <div>
@@ -67,14 +87,18 @@ function CreateHotel() {
            value={estrellas} 
            />
            <br />
-           <label htmlFor="categorias">Categories: </label>
-          <input type="text"
+          <label htmlFor="categorias">Categories: </label>
+          <select type="text"
            name='categorias'
            onChange={handleCategoriasChange}
-           value={categorias} 
-           />
-           <br />
-           <label htmlFor="ubicacion">Ubication: </label>
+           value={categorias}> 
+                        {hotel.map((eachHotel) => {
+                        return (
+                            <option> {eachHotel.categorias} </option>
+                              )   }) }
+          </select>
+          <br />
+          <label htmlFor="ubicacion">Ubication: </label>
           <input type="text"
            name='ubicacion'
            onChange={handleUbicacionChange}
@@ -89,11 +113,15 @@ function CreateHotel() {
            />
            <br />
            <label htmlFor="pension">Pension: </label>
-          <input type="text"
+          <select type="text"
            name='pension'
            onChange={handlePensionChange}
-           value={pension} 
-           />
+           value={pension}>
+                        {hotel.map((eachHotel) => {
+                        return (
+                            <option> {eachHotel.pension} </option>
+                              )    })  }
+           </select>
            <br />
            <label htmlFor="descripcion">Description: </label>
           <input type="text"
