@@ -42,7 +42,8 @@ function EditHotel() {
         navigate("/error")
       }
   }
-
+ 
+  
   const handleSubmit = async (e) => {
 
     e.preventDefault();

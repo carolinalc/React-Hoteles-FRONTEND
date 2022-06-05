@@ -39,4 +39,15 @@ const deleteHotelService = (id) => {
 }
 
 
-export { getAllHotelService, getCiudadService, getResortService, getRuralService, getTematicoService, addNewHotelService, getHotelDetailsService, editHotelService, deleteHotelService,  getCategoriesPension }
+export {
+    getAllHotelService, 
+    getCiudadService, 
+    getResortService, 
+    getRuralService, 
+    getTematicoService, 
+    addNewHotelService, 
+    getHotelDetailsService, 
+    editHotelService, 
+    deleteHotelService,  
+    getCategoriesPension 
+}
