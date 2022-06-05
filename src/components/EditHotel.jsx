@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Navigate, useNavigate, useParams } from "react-router-dom"
-import { editHotelService, getHotelDetailsService } from '../services/hotels.services'
+import { editHotelService, getCategoriesPension, getHotelDetailsService } from '../services/hotels.services'
 
 function EditHotel() {
 
@@ -27,6 +27,21 @@ function EditHotel() {
   const handlePreciosChange = (e) => setPrecios(e.target.value);
   const handlePensionChange = (e) => setPension(e.target.value);
   const handleDescripcionChange = (e) => setDescripcion(e.target.value);
+
+  //Mostrar categorias de la sección select
+  useEffect(() => {
+    mostrarCategories()
+  },[])
+
+  const mostrarCategories = async () => {
+      try {
+        const response = await  getCategoriesPension()
+        setHotel(response.data)
+        console.log(response.data)
+      } catch (error) {
+        navigate("/error")
+      }
+  }
 
   const handleSubmit = async (e) => {
 
