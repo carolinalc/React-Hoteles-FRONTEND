@@ -3,6 +3,9 @@ import { Navigate, useNavigate, useParams } from "react-router-dom"
 import { editHotelService, getHotelDetailsService } from '../services/hotels.services'
 
 function EditHotel() {
+
+  const [hotel, setHotel ] = useState([])
+
   const [ nombre, setNombre ] = useState("")
   const [ estrellas, setEstrellas ] = useState("")
   const [ image, setImage ] = useState("")
@@ -97,11 +100,15 @@ function EditHotel() {
            />
            <br />
            <label htmlFor="categorias">Categories: </label>
-          <input type="text"
+          <select type="text"
            name='categorias'
            onChange={handleCategoriasChange}
-           value={categorias} 
-           />
+           value={categorias}> 
+                        {hotel.map((eachHotel) => {
+                        return (
+                            <option> {eachHotel.categorias} </option>
+                              )   }) }
+          </select>
            <br />
            <label htmlFor="ubicacion">Ubication: </label>
           <input type="text"
@@ -118,11 +125,15 @@ function EditHotel() {
            />
            <br />
            <label htmlFor="pension">Pension: </label>
-          <input type="text"
+          <select type="text"
            name='pension'
            onChange={handlePensionChange}
-           value={pension} 
-           />
+           value={pension}>
+                        {hotel.map((eachHotel) => {
+                        return (
+                            <option> {eachHotel.pension} </option>
+                              )    })  }
+           </select>
            <br />
            <label htmlFor="descripcion">Description: </label>
           <input type="text"

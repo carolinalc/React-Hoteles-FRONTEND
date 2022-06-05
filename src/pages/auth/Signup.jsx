@@ -29,8 +29,9 @@ function Signup() {
     }
     try{
 
-        const response =  await signupService(user)         
-            localStorage.setItem("authToken", response.data.authToken) //guardamos el token en localStorage
+        const response =  await signupService(user)
+        localStorage.setItem("authToken", response.data.authToken) //guardamos el token en localStorage
+        navigate("/login")
 
     }catch(error){
       

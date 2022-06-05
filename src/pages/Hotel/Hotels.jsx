@@ -13,11 +13,29 @@ import ListHotelTematico from '../../components/ListHotelCategories/ListHotelTem
 
 function Hoteles() {
 
-    const [ showList, setShowList ] = useState(false)
+    const [ showListCiudad, setShowListCiuad ] = useState(false)
+    const [ showListResort, setShowListResort ] = useState(false)
+    const [ showListRural, setShowListRural ] = useState(false)
+    const [ showListTematico, setShowListTematico ] = useState(false)
 
 
-    const handleShow = ()=> {
-      setShowList(!showList)
+    const handleShowCiudad = ()=> {
+      setShowListCiuad(!showListCiudad)
+     
+    }
+
+    const handleShowResort = ()=> {
+      setShowListResort(!showListResort)
+     
+    }
+
+    const handleShowRural = ()=> {
+      setShowListRural(!showListRural)
+     
+    }
+
+    const handleShowTematico = ()=> {
+      setShowListTematico(!showListTematico)
      
     }
 
@@ -25,23 +43,23 @@ function Hoteles() {
     <div> 
      
          <div>   
-            <button onClick={handleShow}><img src={ciudadImage}  alt="hotelciudad" width={500}/></button>
-             { showList === true && <ListHotelCiudad /> } 
+            <button onClick={handleShowCiudad}><img src={ciudadImage}  alt="hotelciudad" width={500}/></button>
+             { showListCiudad === true && <ListHotelCiudad /> } 
           </div>
 
           <div>
-            <button onClick={handleShow}><img src={resort} alt="hotelresort" width={500}/></button> 
-            { showList === true && <ListHotelResort /> }  
+            <button onClick={handleShowResort}><img src={resort} alt="hotelresort" width={500}/></button> 
+            { showListResort === true && <ListHotelResort /> }  
           </div>
 
           <div>
-            <button onClick={handleShow}><img src={rural} alt="hotelrural" width={500}/></button>
-            { showList === true && <ListHotelRural /> }               
+            <button onClick={handleShowRural}><img src={rural} alt="hotelrural" width={500}/></button>
+            { showListRural === true && <ListHotelRural /> }               
           </div>
 
           <div>
-            <button onClick={handleShow}><img src={tematico} alt="hoteltematico" width={500}/></button>
-            { showList === true && <ListHotelTematico/> } 
+            <button onClick={handleShowTematico}><img src={tematico} alt="hoteltematico" width={500}/></button>
+            { showListTematico === true && <ListHotelTematico/> } 
          </div>
          {/* <ListHotelCategori getAllDetailsProps={getAllDetails}/> */}
 
