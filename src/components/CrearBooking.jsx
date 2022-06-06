@@ -1,26 +1,24 @@
-import React, { useEffect, useState } from 'react'
-import { Navigate, useNavigate } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { createAllBooking } from '../services/booking.services'
 
 function CrearBooking() {
 
-  const [ fecha, setFecha ] = useState("")
+  const {id} = useParams()
+
+  const [ fechaEntrada, setFechaEntrada ] = useState("")
+  const [ fechaSalida, setFechaSalida ] = useState("")
   const [ huespedes, setHuespedes ] = useState(0)
   const [ checkin, setCheckin ] = useState([])
   const [ comentarios, setComentarios ] = useState("")
-  const [ userName, setUserName] = useState("")
-  const [ dataHotel, setDataHotel] = useState("")
-
+ 
   const navigate = useNavigate()
 
-  const handleFechaChange = (e) => setFecha(e.target.value)
+  const handleFechaEntradaChange = (e) => setFechaEntrada(e.target.value)
+  const handleFechaSalidaChange = (e) => setFechaSalida(e.target.value)
   const handleHuespedesChange = (e) => setHuespedes(e.target.value)
   const handleCheckinChange = (e) => setCheckin(e.target.value)
   const handleComentariosChange = (e) => setComentarios(e.target.value)
- 
-  useEffect(()=>{
-    hadleCreateBooking()
-  })
 
   const hadleCreateBooking = async (e) => {
     e.preventDefault()
@@ -28,17 +26,15 @@ function CrearBooking() {
     try {
 
       const bookingCreate = {
-        fecha, 
+        
+        fechaEntrada,
+        fechaSalida, 
         huespedes, 
         checkin,
-        comentarios,
-        userName,
-        dataHotel
+        comentarios
       }
       
-      await createAllBooking(bookingCreate)
-      setUserName(userName)
-      setDataHotel(dataHotel)
+      await createAllBooking(id, bookingCreate)
       Navigate("/profile")
     } catch (error) {
       navigate("/error")
@@ -51,14 +47,18 @@ function CrearBooking() {
   return (
     <div>
         <form onSubmit={hadleCreateBooking}>
-
-        <label htmlFor="user">User: {userName.username} </label>
-           <br />  
-          <label htmlFor="fecha">Date: </label>
+          <label htmlFor="fechaEntrada">Date In: </label>
                 <input type="date"
-                name='fecha'
-                onChange={handleFechaChange}
-                value={fecha} 
+                name='fechaEntrada'
+                onChange={handleFechaEntradaChange}
+                value={fechaEntrada} 
+                />
+           <br />
+           <label htmlFor="fechaSalida">Date Out: </label>
+                <input type="date"
+                name='fechaSalida'
+                onChange={handleFechaSalidaChange}
+                value={fechaSalida} 
                 />
            <br />
            <label htmlFor="huespedes">Guests: </label>
@@ -68,25 +68,27 @@ function CrearBooking() {
                 value={huespedes} 
                 />
            <br />
-           <label htmlFor="checkin">Check In: </label>
+            <label htmlFor="checkin">Check In: </label>
                 <select type="text"
                 name='checkin'
                 onChange={handleCheckinChange}
                 value={checkin} 
-                >
-                  {checkin.map((each) => {
-                return (
-                  <option> {each.checkin} </option>   
-                )  })}  
+                >  
+                {checkin.map((each)=>{
+                  return(
+                      <option> {each} </option>
+                  ) }) }
+                
                 </select>
-           <br />
+           <br /> 
            <label htmlFor="comment">Comment: </label>
                 <textarea type="text"
                 name='comment'
                 onChange={handleComentariosChange}
                 value={comentarios} 
                 />
-           <br />           
+           <br />   
+           <button type='submit'>Add booking</button>        
       </form>
     </div>
   )

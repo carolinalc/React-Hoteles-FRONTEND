@@ -1,7 +1,7 @@
 import service from "./config.services";
 
-const createAllBooking = (id)=> {
-    return service.post(`/hotels/${id}/booking/create`)
+const createAllBooking = (id, bookingCreate)=> {
+    return service.post(`/hotels/${id}/booking/create`, bookingCreate)
 }
 
 const getAllBooking = (id) => {
