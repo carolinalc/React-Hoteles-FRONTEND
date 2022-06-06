@@ -5,8 +5,8 @@ import EditHotel from '../../components/EditHotel'
 import { getHotelDetailsService, deleteHotelService } from "../../services/hotels.services"
 import { useContext } from 'react'
 import { AuthContext } from "../../context/auth.context.jsx"
-import Booking from '../../components/Booking'
 import Comment from '../../components/Comment'
+import CrearBooking from '../../components/CrearBooking'
 
 function DetailsHotel() {
 
@@ -86,7 +86,7 @@ function DetailsHotel() {
       <br />
 
       { isAdm === true ? <button onClick={handleDelete}> Delete </button> :  <button onClick={handleShowDelete}>Booking</button> }
-      { showListDelete === true &&  <Booking /> } 
+      { showListDelete === true &&  <CrearBooking /> } 
       <br />
       { isAdm === true ? <button onClick={handleShowEdit}> Edit </button>  : <button onClick={handleShowComment}> Comment </button> }
       { showListEdit === true && <EditHotel /> } 
