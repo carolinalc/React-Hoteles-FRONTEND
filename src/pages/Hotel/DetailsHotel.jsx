@@ -82,7 +82,7 @@ function DetailsHotel() {
       <br />
       <p>{deatils.pension}</p>
       <br />
-      <p>{deatils.decripcion}</p>
+      <p>{deatils.descripcion}</p>
       <br />
 
       { isAdm === true ? <button onClick={handleDelete}> Delete </button> :  <button onClick={handleShowDelete}>Booking</button> }

@@ -26,6 +26,7 @@ function CreateHotel() {
 //Mostrar categorias de la sección select
   useEffect(() => {
     mostrarCategories()
+    handleSubmit()
   },[])
 
   const mostrarCategories = async () => {
@@ -90,7 +91,7 @@ function CreateHotel() {
            value={categorias}>   
               {categorias.map((eachCategoria) => {
                 return (
-                  <option> {eachCategoria.categorias} </option>   
+                  <option> {eachCategoria} </option>   
                 )  })}                       
           </select>
           <br />
@@ -115,7 +116,7 @@ function CreateHotel() {
            value={pension}>
               {pension.map((eachCategoria) => {
                 return (
-                  <option> {eachCategoria.pension} </option>   
+                  <option> {eachCategoria} </option>   
                 )  })}        
            </select>
            <br />
