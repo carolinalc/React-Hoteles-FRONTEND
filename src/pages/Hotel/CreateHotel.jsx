@@ -114,14 +114,8 @@ function CreateHotel() {
            value={pension}>
               {pension.map((eachCategoria) => {
                 return (
-<<<<<<< HEAD
-                  <option> {eachCategoria.pension} </option>   
-                )  })}    
-    
-=======
                   <option> {eachCategoria} </option>   
                 )  })}        
->>>>>>> 705db65358dc32c4fcbad22bccd26a3a93a845a8
            </select>
            <br />
            <label htmlFor="descripcion">Description: </label>
