@@ -17,17 +17,15 @@ function CreateHotel() {
 
   const handleNameChange = (e) => setNombre(e.target.value);
   const handleEstrellasChange = (e) => setEstrellas(e.target.value);
-  const handleCategoriasChange = (e) => setCategorias(e.target.value);
   const handleUbicacionChange = (e) => setUbicacion(e.target.value);
   const handlePreciosChange = (e) => setPrecios(e.target.value);
-  const handlePensionChange = (e) => setPension(e.target.value);
+  
   const handleDescripcionChange = (e) => setDescripcion(e.target.value);
 
 //Mostrar categorias de la sección select
   useEffect(() => {
     mostrarCategories()
-    handleSubmit()
-  },[])
+  }, [])
 
   const mostrarCategories = async () => {
       try {
@@ -85,11 +83,10 @@ function CreateHotel() {
           <label htmlFor="categorias">Categories: </label>
           <select type="text"
            name='categorias'
-           onChange={handleCategoriasChange}
-           value={categorias}>   
+           >   
               {categorias.map((eachCategoria) => {
                 return (
-                  <option> {eachCategoria} </option>   
+                  <option value={eachCategoria}> {eachCategoria} </option>  
                 )  })}                       
           </select>
           <br />
@@ -109,12 +106,10 @@ function CreateHotel() {
            <br />
            <label htmlFor="pension">Pension: </label>
           <select type="text"
-           name='pension'
-           onChange={handlePensionChange}
-           value={pension}>
-              {pension.map((eachCategoria) => {
+           name='pension'>
+              {pension.map((each) => {
                 return (
-                  <option> {eachCategoria} </option>   
+                  <option value={each}> {each} </option>   
                 )  })}        
            </select>
            <br />

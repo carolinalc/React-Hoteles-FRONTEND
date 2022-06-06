@@ -4,16 +4,18 @@ import { editHotelService, getCategoriesPension, getHotelDetailsService } from '
 
 function EditHotel() {
 
-  const [hotel, setHotel ] = useState([])
+
+  const [ categoriasUtils, setCategoriasUtils ] = useState([])
+  const [ pensionUtils, setPensionUtils] = useState([])
 
   const [ nombre, setNombre ] = useState("")
   const [ estrellas, setEstrellas ] = useState("")
-  const [ image, setImage ] = useState("")
-  const [ categorias, setCategorias ] = useState("")
+  const [ categorias, setCategorias ] = useState(null)
   const [ ubicacion, setUbicacion ] = useState("")
   const [ precios, setPrecios ] = useState(0)
-  const [ pension, setPension] = useState("")
+  const [ pension, setPension] = useState(null)
   const [ descripcion, setDescripcion] = useState("")
+  console.log(categoriasUtils)
 
   const navigate = useNavigate()
 
@@ -21,23 +23,30 @@ function EditHotel() {
 
   const handleNameChange = (e) => setNombre(e.target.value);
   const handleEstrellasChange = (e) => setEstrellas(e.target.value);
-  const handleImageChange = (e) => setImage(e.target.value);
-  const handleCategoriasChange = (e) => setCategorias(e.target.value);
   const handleUbicacionChange = (e) => setUbicacion(e.target.value);
   const handlePreciosChange = (e) => setPrecios(e.target.value);
-  const handlePensionChange = (e) => setPension(e.target.value);
   const handleDescripcionChange = (e) => setDescripcion(e.target.value);
+  const handleCategoriasChange = (e) => setCategorias(e.target.value)
+  const handlePensionChange = (e) => setPension(e.target.value)
 
   //Mostrar categorias de la sección select
-  useEffect(() => {
+
+  useEffect(()=> {
+    getAllDetails()
     mostrarCategories()
-  },[])
+
+  }, [])
+
 
   const mostrarCategories = async () => {
       try {
         const response = await  getCategoriesPension()
-        setHotel(response.data)
-        console.log(response.data)
+        setCategoriasUtils(response.data.categorias)
+        console.log(response.data.categorias)
+        console.log(response.data.pension)
+        setPensionUtils(response.data.pension)
+        console.log(categoriasUtils)
+        console.log(pensionUtils)
       } catch (error) {
         navigate("/error")
       }
@@ -46,49 +55,48 @@ function EditHotel() {
   
   const handleSubmit = async (e) => {
 
-    e.preventDefault();
+  e.preventDefault();
 
     try {
-      const editHotel = {
-        nombre, 
-        estrellas, 
-        image,
-        categorias, 
-        ubicacion, 
-        precios, 
-        pension,
-        descripcion
-      }
+
+    const formularioEdit = new FormData()
+
+     formularioEdit.append("nombre", nombre)
+     formularioEdit.append("estrellas", estrellas)
+     const inputImg = e.target.querySelector("#img")
+     formularioEdit.append("imagen", inputImg.files[0])
+     formularioEdit.append("categorias", categorias)
+     formularioEdit.append("ubicacion", ubicacion)
+     formularioEdit.append("precios", precios)
+     formularioEdit.append("pension", pension)
+     formularioEdit.append("descripcion", descripcion)
 
     
-      await editHotelService(id, editHotel)
-      Navigate(`/hotels/${id}`)
+      await editHotelService(id, formularioEdit)
+      navigate("/hotels")
+      
 
     }catch (error) {
       navigate("/error")
     }
   };
 
-  useEffect(()=> {
-    getAllDetails()
 
-  }, [])
 
   const getAllDetails = async () => {
     try {
 
       const response = await getHotelDetailsService(id)
-      const { nombre, estrellas, image, categorias, ubicacion, precios, pension, descripcion } = response.data
+      const { nombre, estrellas, categorias, ubicacion, precios, pension, descripcion } = response.data
 
       console.log(response.data)
 
       setNombre(nombre)
       setEstrellas(estrellas)
-      setImage(image)
-      setCategorias(categorias)
+      setCategorias(categoriasUtils)
       setUbicacion(ubicacion)
       setPrecios(precios)
-      setPension(pension)
+      setPension(pensionUtils)
       setDescripcion(descripcion)
 
       
@@ -97,6 +105,10 @@ function EditHotel() {
     }
   }
 
+
+    if(!categoriasUtils || !pensionUtils){
+      return <h3>...Loading</h3>
+    }
 
   return (
     <div>
@@ -118,12 +130,11 @@ function EditHotel() {
            <label htmlFor="categorias">Categories: </label>
           <select type="text"
            name='categorias'
-           onChange={handleCategoriasChange}
-           value={categorias}> 
-                        {hotel.map((eachHotel) => {
-                        return (
-                            <option> {eachHotel.categorias} </option>
-                              )   }) }
+           onChange={handleCategoriasChange}> 
+                   {categoriasUtils.map((eachCategoria) => {
+                return (
+                  <option value={eachCategoria}> {eachCategoria} </option>   
+                )  })}   
           </select>
            <br />
            <label htmlFor="ubicacion">Ubication: </label>
@@ -143,12 +154,11 @@ function EditHotel() {
            <label htmlFor="pension">Pension: </label>
           <select type="text"
            name='pension'
-           onChange={handlePensionChange}
-           value={pension}>
-                        {hotel.map((eachHotel) => {
-                        return (
-                            <option> {eachHotel.pension} </option>
-                              )    })  }
+           onChange={handlePensionChange}>
+                {pensionUtils.map((each) => {
+                return (
+                  <option value={each}> {each} </option>   
+                )  })}  
            </select>
            <br />
            <label htmlFor="descripcion">Description: </label>
@@ -157,12 +167,12 @@ function EditHotel() {
            onChange={handleDescripcionChange}
            value={descripcion} 
            />
+           
            <br />
-           <label htmlFor="image">Image: </label>
-          <input type="text"
-           name='image'
-           onChange={handleImageChange}
-           value={image} 
+           <label htmlFor="imagen">Image: </label>
+           <input type="file"
+              name='imagen'
+              id="img"
            />
 
            <button type='submit'> Update </button>
