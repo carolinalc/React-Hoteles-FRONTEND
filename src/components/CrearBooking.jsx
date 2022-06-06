@@ -21,7 +21,7 @@ function CrearBooking() {
   const handleComentariosChange = (e) => setComentarios(e.target.value)
 
   const hadleCreateBooking = async (e) => {
-    e.preventDefault()
+    //e.preventDefault()
 
     try {
 
