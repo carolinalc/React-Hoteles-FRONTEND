@@ -3,12 +3,20 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { DotLoader } from 'react-spinners'
 import EditHotel from '../../components/EditHotel'
 import { getHotelDetailsService, deleteHotelService } from "../../services/hotels.services"
+import { useContext } from 'react'
+import { AuthContext } from "../../context/auth.context.jsx"
+import Booking from '../../components/Booking'
+import Comment from '../../components/Comment'
 
 function DetailsHotel() {
 
-  const [deatils, setDetails ] = useState(null)
-  const [ showList, setShowList ] = useState(false)
+  const [ deatils, setDetails ] = useState(null)
+  const [ showListEdit, setShowListEdit ] = useState(false)
+  const [ showListDelete, setShowListDelete ] = useState(false)
+  const [ showListComment, setShowListComment ] = useState(false)
   const { id } = useParams()
+
+  const { isAdm } = useContext(AuthContext)
 
   const navigate = useNavigate()
 
@@ -37,8 +45,18 @@ function DetailsHotel() {
     }
   }
 
-  const handleShow = ()=> {
-    setShowList(!showList)
+  const handleShowEdit = ()=> {
+    setShowListEdit(!showListEdit)
+   
+  }
+
+  const handleShowDelete = ()=> {
+    setShowListDelete(!showListDelete)
+   
+  }
+
+  const handleShowComment= ()=> {
+    setShowListComment(!showListComment)
    
   }
   
@@ -66,12 +84,14 @@ function DetailsHotel() {
       <br />
       <p>{deatils.decripcion}</p>
       <br />
-      <button onClick={handleDelete}> Delete </button>
-      <br />
 
-      <button onClick={handleShow}> Edit </button>
-      { showList === true && <EditHotel /> } 
-    </div>
+      { isAdm === true ? <button onClick={handleDelete}> Delete </button> :  <button onClick={handleShowDelete}>Booking</button> }
+      { showListDelete === true &&  <Booking /> } 
+      <br />
+      { isAdm === true ? <button onClick={handleShowEdit}> Edit </button>  : <button onClick={handleShowComment}> Comment </button> }
+      { showListEdit === true && <EditHotel /> } 
+      { showListComment === true && <Comment />}
+     </div>
   )
 }
 
