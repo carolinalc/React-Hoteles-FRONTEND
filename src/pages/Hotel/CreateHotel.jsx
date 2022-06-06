@@ -30,12 +30,10 @@ function CreateHotel() {
 
   const mostrarCategories = async () => {
       try {
-        
         const response = await  getCategoriesPension()
         setCategorias(response.data.categorias)
         console.log(response.data.categorias)
         setPension(response.data.pension)
-
       } catch (error) {
         navigate("/error")
       }
@@ -116,7 +114,8 @@ function CreateHotel() {
               {pension.map((eachCategoria) => {
                 return (
                   <option> {eachCategoria.pension} </option>   
-                )  })}        
+                )  })}    
+    
            </select>
            <br />
            <label htmlFor="descripcion">Description: </label>
