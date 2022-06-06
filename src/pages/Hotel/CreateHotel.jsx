@@ -5,15 +5,12 @@ import { addNewHotelService,  getCategoriesPension } from '../../services/hotels
 
 function CreateHotel() {
 
-  const [hotel, setHotel ] = useState([])
-
   const [ nombre, setNombre ] = useState("")
   const [ estrellas, setEstrellas ] = useState("")
-  // const [ imagen, setImagen ] = useState("")
-  const [ categorias, setCategorias ] = useState("")
+  const [ categorias, setCategorias ] = useState([])
   const [ ubicacion, setUbicacion ] = useState("")
   const [ precios, setPrecios ] = useState(0)
-  const [ pension, setPension] = useState("")
+  const [ pension, setPension] = useState([])
   const [ descripcion, setDescripcion] = useState("")
 
   const navigate = useNavigate()
@@ -21,7 +18,6 @@ function CreateHotel() {
   const handleNameChange = (e) => setNombre(e.target.value);
   const handleEstrellasChange = (e) => setEstrellas(e.target.value);
   const handleCategoriasChange = (e) => setCategorias(e.target.value);
-  // const handleImagenChange = (e) => setImagen(e.target.value);
   const handleUbicacionChange = (e) => setUbicacion(e.target.value);
   const handlePreciosChange = (e) => setPrecios(e.target.value);
   const handlePensionChange = (e) => setPension(e.target.value);
@@ -35,8 +31,9 @@ function CreateHotel() {
   const mostrarCategories = async () => {
       try {
         const response = await  getCategoriesPension()
-        setHotel(response.data)
-        console.log(response.data)
+        setCategorias(response.data.categorias)
+        console.log(response.data.categorias)
+        setPension(response.data.pension)
       } catch (error) {
         navigate("/error")
       }
@@ -47,20 +44,17 @@ function CreateHotel() {
     e.preventDefault()
 
     try {
-      
-      const newHotel = {
-        nombre, 
-        estrellas, 
-        // imagen,
-        categorias, 
-        ubicacion, 
-        precios, 
-        pension,
-        descripcion
-      }
-
-      
-      await addNewHotelService(newHotel)
+      const formulario = new FormData()
+      formulario.append("nombre", nombre)
+      formulario.append("estrellas", estrellas)
+      formulario.append("imagen", e.target.files[0])
+      formulario.append("categorias", categorias)
+      formulario.append("ubicacion", ubicacion)
+      formulario.append("precios", precios)
+      formulario.append("pension", pension)
+      formulario.append("descripcion", descripcion)
+    
+      await addNewHotelService(formulario)
       navigate("/hotels")
 
     } catch (error) {
@@ -91,11 +85,11 @@ function CreateHotel() {
           <select type="text"
            name='categorias'
            onChange={handleCategoriasChange}
-           value={categorias}> 
-                        {hotel.map((eachHotel) => {
-                        return (
-                            <option> {eachHotel.categorias} </option>
-                              )   }) }
+           value={categorias}>   
+              {categorias.map((eachCategoria) => {
+                return (
+                  <option> {eachCategoria.categorias} </option>   
+                )  })}                       
           </select>
           <br />
           <label htmlFor="ubicacion">Ubication: </label>
@@ -117,10 +111,10 @@ function CreateHotel() {
            name='pension'
            onChange={handlePensionChange}
            value={pension}>
-                        {hotel.map((eachHotel) => {
-                        return (
-                            <option> {eachHotel.pension} </option>
-                              )    })  }
+              {pension.map((eachCategoria) => {
+                return (
+                  <option> {eachCategoria.pension} </option>   
+                )  })}        
            </select>
            <br />
            <label htmlFor="descripcion">Description: </label>
@@ -130,12 +124,10 @@ function CreateHotel() {
            value={descripcion} 
            />
            <br />
-           {/* <label htmlFor="imagen">Image: </label>
-           <input type="text"
+           <label htmlFor="imagen">Image: </label>
+           <input type="file"
            name='imagen'
-           onChange={handleImagenChange}
-           value={falta imagen} 
-           />  */}
+           />
 
            <button type='submit'> Create</button>
       </form> 

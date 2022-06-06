@@ -2,15 +2,15 @@ import { useContext } from 'react'
 import { AuthContext } from "../../context/auth.context.jsx"
 import { Navigate } from "react-router-dom"
 
-function IsAdm(props) {
+function IsAdmin(props) {
 
     const { isAdm } = useContext(AuthContext)
   
-    if( isAdm === true ){
+    if( isAdm  === true ){
       return props.children
     } else {
-      return <Navigate to="/home" />
+      return <Navigate to="/login" />
     }  
   }
   
-  export default IsAdm
+  export default IsAdmin

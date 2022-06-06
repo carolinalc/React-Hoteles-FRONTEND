@@ -20,7 +20,12 @@ function AuthWrapper(props){
             setIsLogging(true)
             setUser(response.data)
             setIsLoading(false)
-            setIsAdm(true)
+
+            if(response.data.role === "admin"){
+                setIsAdm(true)
+            } else {
+                setIsAdm(false)
+            }
 
         }catch(error){
             console.log("El usuario no tiene token o no es válido")

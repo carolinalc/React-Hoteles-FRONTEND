@@ -1,8 +1,8 @@
 import service from "./config.services";
 
-const getCategoriesPension = () => {
-    return service.get("/hotels/selectores")
-}
+ const getCategoriesPension = () => {
+  return service.get("/hotels/selectores")
+ }
 
 const getAllHotelService = () => {
     return service.get("/hotels")
@@ -22,8 +22,8 @@ const getTematicoService = () => {
     return service.get("/hotels/tematico")
 }
 
-const addNewHotelService = (theHotel) => {
-    return service.post("/hotels", theHotel)
+const addNewHotelService = (formulario) => {
+    return service.post("/hotels/create", formulario)
 }
 
 const getHotelDetailsService = (id) => {
