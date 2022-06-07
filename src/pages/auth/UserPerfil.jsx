@@ -48,6 +48,8 @@ function UserPerfil() {
         <br />
 
         {  isAdm === true ?  <AdminBooking />  : <ClientBooking /> }
+
+        
     </div>
   )
 }

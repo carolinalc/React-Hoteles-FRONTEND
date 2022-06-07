@@ -4,11 +4,9 @@ const createAllBooking = (id, bookingCreate)=> {
     return service.post(`/hotels/${id}/booking/create`, bookingCreate)
 }
 
-const getAllBooking = (id) => {
-    return service.get(`/hotels/${id}/booking`)
+const getAllBooking = (idBooking) => {
+    return service.get(`/hotels/${idBooking}/booking`)
 }
-
-
 
 
 export {
