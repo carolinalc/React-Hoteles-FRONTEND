@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Navigate, useNavigate, useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { editHotelService, getCategoriesPension, getHotelDetailsService } from '../services/hotels.services'
 
 function EditHotel() {
@@ -55,7 +55,7 @@ function EditHotel() {
   
   const handleSubmit = async (e) => {
 
-  e.preventDefault();
+  //e.preventDefault();
 
     try {
 
@@ -87,7 +87,7 @@ function EditHotel() {
     try {
 
       const response = await getHotelDetailsService(id)
-      const { nombre, estrellas, categorias, ubicacion, precios, pension, descripcion } = response.data
+      const { nombre, estrellas, categoriasUtils, ubicacion, precios, pensionUtils, descripcion } = response.data
 
       console.log(response.data)
 

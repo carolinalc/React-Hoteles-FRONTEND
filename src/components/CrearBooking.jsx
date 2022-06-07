@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Navigate, useNavigate, useParams } from 'react-router-dom'
+import {  useNavigate, useParams } from 'react-router-dom'
 import { createAllBooking } from '../services/booking.services'
 import { getCategoriesPension } from '../services/hotels.services'
 
@@ -19,6 +19,7 @@ function CrearBooking() {
   const handleFechaSalidaChange = (e) => setFechaSalida(e.target.value)
   const handleHuespedesChange = (e) => setHuespedes(e.target.value)
   const handleComentariosChange = (e) => setComentarios(e.target.value)
+  // const handleCheckinChange = (e) => setCheckin(e.target.value)
 
   useEffect(() => {
     mostrarCheckin()
@@ -35,7 +36,7 @@ function CrearBooking() {
   }
 
   const hadleCreateBooking = async (e) => {
-    e.preventDefault()
+    //e.preventDefault()
 
     try {
 
@@ -49,13 +50,16 @@ function CrearBooking() {
       }
       
       await createAllBooking(id, bookingCreate)
-      Navigate("/profile")
+      navigate("/profile")
     } catch (error) {
       navigate("/error")
     }
 
   }
 
+  if(checkin === null){
+    return <h3>...Loading</h3>
+  }
 
 
   return (
@@ -83,13 +87,15 @@ function CrearBooking() {
                 />
            <br />
             <label htmlFor="checkin">Check In: </label>
-                {/* <select type="text"
-                name='checkin'>  
+                 <select type="text"
+                name='checkin'
+                // onChange={handleCheckinChange}
+                >  
                 {checkin.map((each) =>  {
                   return(
                       <option value={each}> {each} </option>
                   ) }) }     
-                </select> */}
+                </select> 
            <br /> 
            <label htmlFor="comment">Comment: </label>
                 <textarea type="text"
