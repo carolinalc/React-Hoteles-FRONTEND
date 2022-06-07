@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { getAllBooking } from '../../services/booking.services'
 
 
-function booking() {
+function Booking() {
 
   const [ deatils, setDetails ] = useState(null)
   
@@ -35,4 +35,4 @@ const getDetailsBoooking = async () => {
   )
 }
 
-export default booking
+export default Booking
