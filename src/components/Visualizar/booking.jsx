@@ -1,65 +1,62 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import React, { useEffect, useState, useParams } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { DotLoader } from 'react-spinners'
 import { getAllBooking } from '../../services/booking.services'
-import { getAllHotelService } from '../../services/hotels.services'
 
 
 function Booking() {
 
   const [ details, setDetails ] = useState(null)
-  const [ detailsHotel, setDetailsHotel ] = useState(null)
-  
-  const { id } = useParams()
+
+  const {idBooking} = useParams()
+  console.log(idBooking)
 
   const navigate = useNavigate()
 
       useEffect(() =>{
         getDetailsBoooking()
-        getDetailsHotel()
       }, [])
 
   const getDetailsBoooking = async () => {
 
     try {
 
-      const response = await getAllBooking(id)
+      const response = await getAllBooking(idBooking)
       setDetails(response.data)
+      console.log(response.data)
       
     } catch (error) {
       navigate("/error")
     }
   }
 
-  const getDetailsHotel = async () => {
-
-    try {
-
-      const response = await getAllHotelService().populate("pension precios")
-      setDetails(response.data)
-      
-    } catch (error) {
-      navigate("/error")
-    }
-  }
-
- if(details === undefined){
+ if(details === null){
    return <DotLoader/>
  }
 
 
   return (
     <div>
-      <br />
-      <h2>{details.fechaEntrada}</h2>
-      <br />
-      <h2>{details.fechaSalida}</h2>
-      <br />
-      <h2>{details.huespedes}</h2>
-      <br />
-      <h2>{details.checkin}</h2>
-      <br />
-      <h2>{details.comentarios}</h2>
+      { details.map((each) =>{
+        return(
+        <div>
+          <h2>{each.username}</h2>
+          <br />
+          <h2>{each.nombre}</h2>
+          <br />
+          <h2>{each.fechaEntrada}</h2>
+          <br />
+          <h2>{each.fechaSalida}</h2>
+          <br />
+          <h2>{each.huespedes}</h2>
+          <br />
+          <h2>{each.checkin}</h2>
+          <br />
+          <h2>{each.comentarios}</h2>
+      </div>
+        )
+
+      })}
       
     </div>
   )

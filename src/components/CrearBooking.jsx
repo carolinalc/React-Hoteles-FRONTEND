@@ -32,7 +32,7 @@ function CrearBooking() {
   const mostrarCheckin = async () => {
       try {
         const response = await getCategoriesPension()
-        console.log(response.data)
+        //console.log(response.data)
         setCheckinUtil(response.data.checkin)
       
       } catch (error) {

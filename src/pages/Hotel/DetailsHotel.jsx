@@ -7,6 +7,7 @@ import { useContext } from 'react'
 import { AuthContext } from "../../context/auth.context.jsx"
 import Comment from '../../components/Comment'
 import CrearBooking from '../../components/CrearBooking'
+import VerComments from '../../components/Visualizar/VerComments'
 
 function DetailsHotel() {
 
@@ -84,6 +85,7 @@ function DetailsHotel() {
       <br />
       <p>{deatils.descripcion}</p>
       <br />
+      {/* <VerComments/> */}
 {/* 
       { isAdm === true ? <button onClick={handleDelete}> Delete </button> :  <button onClick={handleShowDelete}>Booking</button> }
       { showListDelete === true &&  <CrearBooking /> } 

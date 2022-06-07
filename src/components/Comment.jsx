@@ -6,16 +6,16 @@ import { getCategoriesPension } from '../services/hotels.services'
 function Comment() {
 
   const [ comentario, setComentario ] = useState("")
+
   const [ valoracion , setValoracion ] = useState([])
-
-  const [ userName, setUserName ] = useState("")
-
-  const { id } = useParams()
+  const [valoracionUtil, setValoracionUtil ] = useState(null)
+  
+  const { idComment } = useParams()
 
   const navigate = useNavigate()
 
   const handleComentarioChange = (e) => setComentario(e.target.value)
-  // const handleValoracionChange = (e) => setValoracion(e.target.value)
+  const handleValoracionChange = (e) => setValoracion(e.target.value)
 
 
    useEffect(() => {
@@ -25,7 +25,7 @@ function Comment() {
   const mostrarValoracion = async () => {
       try {
         const response = await  getCategoriesPension()
-        setValoracion(response.data.valoracion)
+        setValoracionUtil(response.data.valoracion)
       
       } catch (error) {
         navigate("/error")
@@ -40,11 +40,10 @@ function Comment() {
 
       const newComment = {
         comentario,
-        valoracion,
-        userName
+        valoracion
       }
 
-      await createComments(id, newComment)
+      await createComments(idComment, newComment)
       navigate("/hotels")
       
     } catch (error) {
@@ -54,7 +53,7 @@ function Comment() {
   }
 
   
-  if(valoracion === null){
+  if(valoracionUtil === null){
     return <h3>...Loading</h3>
   }
   
@@ -62,8 +61,6 @@ function Comment() {
     <div>
       
     <form onSubmit={handleCreateComment}>
-
-    <label htmlFor="user">User: {userName.username} </label>
        <br />  
       <label htmlFor="comment">Comment: </label>
             <textarea type="text"
@@ -75,9 +72,9 @@ function Comment() {
        <label htmlFor="valoracion">Rating: </label>
         <select type="text"
                 name='valoracion' 
-                // onChange={handleValoracionChange}
+                onChange={handleValoracionChange}
                 >
-                  {valoracion.map((each) => {
+                  {valoracionUtil.map((each) => {
                 return (
                   <option value={each}> {each} </option>   
                 )  })}  
