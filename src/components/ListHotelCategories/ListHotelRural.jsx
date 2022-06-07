@@ -18,7 +18,6 @@ function ListHotelRural() {
         
         const response = await getRuralService()
             setDetalleRural(response.data)
-            console.log(response.data)
         
       } catch (error) {
         navigate("/error")

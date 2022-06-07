@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useParams } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { DotLoader } from 'react-spinners'
 import { getAllBooking } from '../../services/booking.services'
@@ -7,9 +7,6 @@ import { getAllBooking } from '../../services/booking.services'
 function Booking() {
 
   const [ details, setDetails ] = useState(null)
-
-  const {idBooking} = useParams()
-  console.log(idBooking)
 
   const navigate = useNavigate()
 
@@ -21,7 +18,7 @@ function Booking() {
 
     try {
 
-      const response = await getAllBooking(idBooking)
+      const response = await getAllBooking()
       setDetails(response.data)
       console.log(response.data)
       
@@ -40,9 +37,9 @@ function Booking() {
       { details.map((each) =>{
         return(
         <div>
-          <h2>{each.username}</h2>
+          <h2>{each.clienteId.username}</h2>
           <br />
-          <h2>{each.nombre}</h2>
+          <h2>{each.hotelId.nombre}</h2>
           <br />
           <h2>{each.fechaEntrada}</h2>
           <br />

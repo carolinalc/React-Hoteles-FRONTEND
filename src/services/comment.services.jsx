@@ -1,13 +1,12 @@
 import service from "./config.services";
 
-const getAllComments = (id) =>{
-    return service.get(`/hotels/${id}/coment`)
+const getComments = (id) => {
+    return service.get(`/coment/${id}`)
 }
-console.log(getAllComments)
 
 const createComments = (id, newComment) =>{
-    return service.post(`/hotels/${id}/coment/create`, newComment)
+    return service.post(`/coment/${id}/create`, newComment)
 }
 
 
-export{ getAllComments, createComments}
+export { getComments, createComments}

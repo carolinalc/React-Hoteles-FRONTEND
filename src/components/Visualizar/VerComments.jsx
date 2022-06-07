@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { DotLoader } from 'react-spinners'
+import { getComments } from '../../services/comment.services'
 
 function VerComments() {
 
-    const [ details, setDetails ] = useState(null)
+    const [ listComment, setListComment] = useState(null)
 
     const {id} = useParams()
 
@@ -17,22 +18,21 @@ function VerComments() {
     const getAllComments = async () => {
 
         try {
-            const response = await getAllComments(id)
-            setDetails(response.data)
-            console.log(response.data.id)
-            
+            const response = await getComments(id)
+            setListComment(response.data)
+            console.log(response.data)
         } catch (error) {
             navigate("/error")
         }
     }
 
-    if(details === null){
+    if(listComment === null){
         return <DotLoader/>
     } 
 
   return (
     <div>
-        {details.map((each) =>{
+        {listComment.map((each) =>{
             return(
                 <div>
                     <h3> {each.username}</h3>

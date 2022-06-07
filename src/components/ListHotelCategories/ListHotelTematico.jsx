@@ -16,7 +16,6 @@ function ListHotelTematico() {
         
         const response = await getTematicoService()
             setDetalleTematico(response.data)
-            console.log(response.data)
         
       } catch (error) {
         navigate("/error")

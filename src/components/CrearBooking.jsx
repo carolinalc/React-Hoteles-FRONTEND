@@ -5,7 +5,7 @@ import { getCategoriesPension } from '../services/hotels.services'
 
 function CrearBooking() {
 
-  const {id} = useParams()
+  const {idHotel} = useParams()
 
   // campos que escribe el usuario
   const [ fechaEntrada, setFechaEntrada ] = useState("")
@@ -54,7 +54,7 @@ function CrearBooking() {
         comentarios
       }
       
-      await createAllBooking(id, bookingCreate)
+      await createAllBooking(idHotel, bookingCreate)
       navigate("/profile")
     } catch (error) {
       navigate("/error")

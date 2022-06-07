@@ -17,8 +17,7 @@ function ListHotelCiudad() {
       
       const response = await getCiudadService()
           setDetalleCiudad(response.data)
-          console.log(response.data)
-      
+         
     } catch (error) {
       navigate("/error")
     }

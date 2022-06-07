@@ -15,7 +15,6 @@ function EditHotel() {
   const [ precios, setPrecios ] = useState(0)
   const [ pension, setPension] = useState(null)
   const [ descripcion, setDescripcion] = useState("")
-  console.log(categoriasUtils)
 
   const navigate = useNavigate()
 
@@ -42,11 +41,7 @@ function EditHotel() {
       try {
         const response = await  getCategoriesPension()
         setCategoriasUtils(response.data.categorias)
-        console.log(response.data.categorias)
-        console.log(response.data.pension)
         setPensionUtils(response.data.pension)
-        console.log(categoriasUtils)
-        console.log(pensionUtils)
       } catch (error) {
         navigate("/error")
       }
@@ -55,7 +50,7 @@ function EditHotel() {
   
   const handleSubmit = async (e) => {
 
-  //e.preventDefault();
+  e.preventDefault();
 
     try {
 
@@ -72,7 +67,8 @@ function EditHotel() {
      formularioEdit.append("descripcion", descripcion)
 
     
-      await editHotelService(id, formularioEdit)
+     const response = await editHotelService(id, formularioEdit)
+     console.log("data edit formulario:", response.data)
       navigate("/hotels")
       
 
@@ -88,8 +84,6 @@ function EditHotel() {
 
       const response = await getHotelDetailsService(id)
       const { nombre, estrellas, categoriasUtils, ubicacion, precios, pensionUtils, descripcion } = response.data
-
-      console.log(response.data)
 
       setNombre(nombre)
       setEstrellas(estrellas)

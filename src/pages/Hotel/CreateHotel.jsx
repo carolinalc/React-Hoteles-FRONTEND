@@ -46,7 +46,8 @@ function CreateHotel() {
       const formulario = new FormData()
       formulario.append("nombre", nombre)
       formulario.append("estrellas", estrellas)
-      formulario.append("imagen", e.target.files[0])
+      const inputImg = e.target.querySelector("#img")
+      formulario.append("imagen", inputImg.target.files[0])
       formulario.append("categorias", categorias)
       formulario.append("ubicacion", ubicacion)
       formulario.append("precios", precios)
@@ -122,7 +123,8 @@ function CreateHotel() {
            <br />
            <label htmlFor="imagen">Image: </label>
            <input type="file"
-           name='imagen'
+              name='imagen'
+              id="img"
            />
 
            <button type='submit'> Create</button>

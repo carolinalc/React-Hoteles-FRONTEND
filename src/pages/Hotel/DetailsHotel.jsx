@@ -85,7 +85,8 @@ function DetailsHotel() {
       <br />
       <p>{deatils.descripcion}</p>
       <br />
-      {/* <VerComments/> */}
+      
+          <div><VerComments /></div> 
 {/* 
       { isAdm === true ? <button onClick={handleDelete}> Delete </button> :  <button onClick={handleShowDelete}>Booking</button> }
       { showListDelete === true &&  <CrearBooking /> } 

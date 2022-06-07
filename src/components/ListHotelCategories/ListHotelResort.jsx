@@ -16,7 +16,6 @@ function ListHotelResort() {
         
         const response = await getResortService()
             setDetalleResort(response.data)
-            console.log(response.data)
         
       } catch (error) {
         navigate("/error")
