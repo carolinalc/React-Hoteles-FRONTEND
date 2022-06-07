@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Navigate, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { createComments } from '../services/comment.services'
 import { getCategoriesPension } from '../services/hotels.services'
 
@@ -7,6 +7,7 @@ function Comment() {
 
   const [ comentario, setComentario ] = useState("")
   const [ valoracion , setValoracion ] = useState([])
+
   const [ userName, setUserName ] = useState("")
 
   const { id } = useParams()
@@ -14,11 +15,12 @@ function Comment() {
   const navigate = useNavigate()
 
   const handleComentarioChange = (e) => setComentario(e.target.value)
+  // const handleValoracionChange = (e) => setValoracion(e.target.value)
 
-  useEffect(() => {
-    handleCreateComment()
-    mostrarValoracion ()
-  }, [])
+
+   useEffect(() => {
+     mostrarValoracion()
+    }, [])
 
   const mostrarValoracion = async () => {
       try {
@@ -32,7 +34,7 @@ function Comment() {
 
 
   const handleCreateComment = async (e) =>{
-    e.preventDefault()
+    //e.preventDefault()
 
     try {
 
@@ -43,14 +45,17 @@ function Comment() {
       }
 
       await createComments(id, newComment)
-      // setComentario(comentario)
-      // setUserName(userName)
-      navigate("/hotels/")
+      navigate("/hotels")
       
     } catch (error) {
       navigate("/error")
     }
 
+  }
+
+  
+  if(valoracion === null){
+    return <h3>...Loading</h3>
   }
   
   return (
@@ -68,14 +73,17 @@ function Comment() {
             />
        <br />
        <label htmlFor="valoracion">Rating: </label>
-       {/* <select type="text"
-                name='valoracion' >
+        <select type="text"
+                name='valoracion' 
+                // onChange={handleValoracionChange}
+                >
                   {valoracion.map((each) => {
                 return (
                   <option value={each}> {each} </option>   
                 )  })}  
-                </select> */}
+                </select>
        <br />
+       <button type='submit'>Add Comment</button>   
        </form>
        </div>
   )
