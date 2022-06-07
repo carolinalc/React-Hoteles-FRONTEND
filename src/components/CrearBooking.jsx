@@ -5,14 +5,14 @@ import { getCategoriesPension } from '../services/hotels.services'
 
 function CrearBooking() {
 
-  const {idHotel} = useParams()
+  const {id} = useParams()
 
   // campos que escribe el usuario
   const [ fechaEntrada, setFechaEntrada ] = useState("")
   const [ fechaSalida, setFechaSalida ] = useState("")
   const [ huespedes, setHuespedes ] = useState(0)
   const [ comentarios, setComentarios ] = useState("")
-  const [ checkin, setCheckin ] = useState("")
+  const [ checkin, setCheckin ] = useState("10:00-13:00")
 
   // array de utils para el select/options. ES NULO PORQUE NO LO HEMOS RECIBIDO DEL SERVER
   const [ checkinUtil, setCheckinUtil] = useState(null)
@@ -25,6 +25,8 @@ function CrearBooking() {
   const handleComentariosChange = (e) => setComentarios(e.target.value)
   const handleCheckinChange = (e) => setCheckin(e.target.value)
 
+
+
   useEffect(() => {
     mostrarCheckin()
   }, [])
@@ -32,7 +34,7 @@ function CrearBooking() {
   const mostrarCheckin = async () => {
       try {
         const response = await getCategoriesPension()
-        //console.log(response.data)
+        console.log(response.data.checkin)
         setCheckinUtil(response.data.checkin)
       
       } catch (error) {
@@ -41,7 +43,7 @@ function CrearBooking() {
   }
 
   const hadleCreateBooking = async (e) => {
-    //e.preventDefault()
+    e.preventDefault()
 
     try {
 
@@ -54,7 +56,8 @@ function CrearBooking() {
         comentarios
       }
       
-      await createAllBooking(idHotel, bookingCreate)
+    const response =  await createAllBooking(id, bookingCreate)
+    console.log(response)
       navigate("/profile")
     } catch (error) {
       navigate("/error")
@@ -93,7 +96,7 @@ function CrearBooking() {
                 />
            <br />
             <label htmlFor="checkin">Check In: </label>
-                 <select type="text"
+                <select type="text"
                 name='checkin'
                 onChange={handleCheckinChange}
                 >  

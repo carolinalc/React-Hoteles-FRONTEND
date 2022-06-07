@@ -34,12 +34,12 @@ function Booking() {
 
   return (
     <div>
-      { details.map((each) =>{
+      {details.map((each) =>{
         return(
         <div>
-          <h2>{each.clienteId.username}</h2>
+          {/* <h2>{each.clienteId.username}</h2> */}
           <br />
-          <h2>{each.hotelId.nombre}</h2>
+          {/* <h2>{each.hotelId.nombre}</h2> */}
           <br />
           <h2>{each.fechaEntrada}</h2>
           <br />

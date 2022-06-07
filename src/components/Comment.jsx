@@ -7,16 +7,17 @@ function Comment() {
 
   const [ comentario, setComentario ] = useState("")
 
-  const [ valoracion , setValoracion ] = useState([])
+  const [ valoracion , setValoracion ] = useState(3)
   const [valoracionUtil, setValoracionUtil ] = useState(null)
   
-  const { idComment } = useParams()
+  const { id } = useParams()
 
   const navigate = useNavigate()
 
   const handleComentarioChange = (e) => setComentario(e.target.value)
   const handleValoracionChange = (e) => setValoracion(e.target.value)
 
+  
 
    useEffect(() => {
      mostrarValoracion()
@@ -34,7 +35,7 @@ function Comment() {
 
 
   const handleCreateComment = async (e) =>{
-    //e.preventDefault()
+    // e.preventDefault()
 
     try {
 
@@ -43,7 +44,7 @@ function Comment() {
         valoracion
       }
 
-      await createComments(idComment, newComment)
+      await createComments(id, newComment)
       navigate("/hotels")
       
     } catch (error) {
@@ -74,9 +75,10 @@ function Comment() {
                 name='valoracion' 
                 onChange={handleValoracionChange}
                 >
+                  {/* <option> selecciona tu puntuación </option>    */}
                   {valoracionUtil.map((each) => {
                 return (
-                  <option value={each}> {each} </option>   
+                  <option value={each}> {each} </option>      
                 )  })}  
                 </select>
        <br />

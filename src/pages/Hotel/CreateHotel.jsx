@@ -19,7 +19,6 @@ function CreateHotel() {
   const handleEstrellasChange = (e) => setEstrellas(e.target.value);
   const handleUbicacionChange = (e) => setUbicacion(e.target.value);
   const handlePreciosChange = (e) => setPrecios(e.target.value);
-  
   const handleDescripcionChange = (e) => setDescripcion(e.target.value);
 
 //Mostrar categorias de la sección select
