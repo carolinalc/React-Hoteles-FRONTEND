@@ -21,7 +21,7 @@ import Login from "./pages/auth/Login";
 import Navbar from "./components/Navbar"
 
 //Private routes
-import IsPrivate from "../src/components/Autorization/isPrivate"
+import IsPrivate from "../src/components/Autorization/IsPrivate"
 
 function App() {
   return (

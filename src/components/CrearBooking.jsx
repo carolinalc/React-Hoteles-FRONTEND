@@ -7,11 +7,15 @@ function CrearBooking() {
 
   const {id} = useParams()
 
+  // campos que escribe el usuario
   const [ fechaEntrada, setFechaEntrada ] = useState("")
   const [ fechaSalida, setFechaSalida ] = useState("")
   const [ huespedes, setHuespedes ] = useState(0)
-  const [ checkin, setCheckin ] = useState([])
   const [ comentarios, setComentarios ] = useState("")
+  const [ checkin, setCheckin ] = useState("")
+
+  // array de utils para el select/options. ES NULO PORQUE NO LO HEMOS RECIBIDO DEL SERVER
+  const [ checkinUtil, setCheckinUtil] = useState(null)
  
   const navigate = useNavigate()
 
@@ -19,7 +23,7 @@ function CrearBooking() {
   const handleFechaSalidaChange = (e) => setFechaSalida(e.target.value)
   const handleHuespedesChange = (e) => setHuespedes(e.target.value)
   const handleComentariosChange = (e) => setComentarios(e.target.value)
-  // const handleCheckinChange = (e) => setCheckin(e.target.value)
+  const handleCheckinChange = (e) => setCheckin(e.target.value)
 
   useEffect(() => {
     mostrarCheckin()
@@ -28,7 +32,8 @@ function CrearBooking() {
   const mostrarCheckin = async () => {
       try {
         const response = await getCategoriesPension()
-        setCheckin(response.data.checkin)
+        console.log(response.data)
+        setCheckinUtil(response.data.checkin)
       
       } catch (error) {
         navigate("/error")
@@ -57,7 +62,8 @@ function CrearBooking() {
 
   }
 
-  if(checkin === null){
+  // PREVIENE QUE SE RENDERICE ANTES DE RECIBIR LA INFO DEL SERVER
+  if(checkinUtil === null){
     return <h3>...Loading</h3>
   }
 
@@ -89,9 +95,9 @@ function CrearBooking() {
             <label htmlFor="checkin">Check In: </label>
                  <select type="text"
                 name='checkin'
-                // onChange={handleCheckinChange}
+                onChange={handleCheckinChange}
                 >  
-                {checkin.map((each) =>  {
+                {checkinUtil.map((each) =>  {
                   return(
                       <option value={each}> {each} </option>
                   ) }) }     
