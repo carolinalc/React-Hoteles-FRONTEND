@@ -1,21 +1,35 @@
 import React, { useEffect, useState } from 'react'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { createComments } from '../services/comment.services'
+import { getCategoriesPension } from '../services/hotels.services'
 
 function Comment() {
 
   const [ comentario, setComentario ] = useState("")
-  const [ valoracion , setValoracion ] = useState("")
+  const [ valoracion , setValoracion ] = useState([])
   const [ userName, setUserName ] = useState("")
+
+  const { id } = useParams()
 
   const navigate = useNavigate()
 
   const handleComentarioChange = (e) => setComentario(e.target.value)
-  const handleValoracionChange = (e) => setValoracion(e.target.value)
 
   useEffect(() => {
     handleCreateComment()
+    mostrarValoracion ()
   }, [])
+
+  const mostrarValoracion = async () => {
+      try {
+        const response = await  getCategoriesPension()
+        setValoracion(response.data.valoracion)
+      
+      } catch (error) {
+        navigate("/error")
+      }
+  }
+
 
   const handleCreateComment = async (e) =>{
     e.preventDefault()
@@ -28,11 +42,10 @@ function Comment() {
         userName
       }
 
-      await createComments(newComment)
-      setComentario(comentario)
-      setValoracion(valoracion)
-      setUserName(userName)
-      //Navigate(`/hotels/${id}`)
+      await createComments(id, newComment)
+      // setComentario(comentario)
+      // setUserName(userName)
+      navigate("/hotels/")
       
     } catch (error) {
       navigate("/error")
@@ -40,8 +53,6 @@ function Comment() {
 
   }
   
-
-
   return (
     <div>
       
@@ -57,16 +68,13 @@ function Comment() {
             />
        <br />
        <label htmlFor="valoracion">Rating: </label>
-       <select type="text"
-                name='valoracion'
-                onChange={handleValoracionChange}
-                value={valoracion} 
-                >
+       {/* <select type="text"
+                name='valoracion' >
                   {valoracion.map((each) => {
                 return (
-                  <option> {each.valoracion} </option>   
+                  <option value={each}> {each} </option>   
                 )  })}  
-                </select>
+                </select> */}
        <br />
        </form>
        </div>

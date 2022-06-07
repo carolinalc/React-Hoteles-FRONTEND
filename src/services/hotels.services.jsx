@@ -30,8 +30,8 @@ const getHotelDetailsService = (id) => {
     return service.get(`/hotels/${id}`)
 }
 
-const editHotelService = (id, theHotel) => {
-    return service.patch(`/hotels/${id}`, theHotel)
+const editHotelService = (id, formularioEdit) => {
+    return service.patch(`/hotels/${id}`, formularioEdit)
 }
 
 const deleteHotelService = (id) => {
