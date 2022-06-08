@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { DotLoader } from 'react-spinners'
 import { getAllBooking, deleteBooking } from '../../services/booking.services'
 
@@ -8,6 +8,8 @@ import { getAllBooking, deleteBooking } from '../../services/booking.services'
 function Booking() {
 
   const [ details, setDetails ] = useState(null)
+
+  const {id} = useParams()
 
   const navigate = useNavigate()
 
@@ -28,9 +30,9 @@ function Booking() {
     }
   }
 
-  const handleDelete = async (idBooking) => {
+  const handleDelete = async () => {
     try {
-      await deleteBooking(idBooking)
+      await deleteBooking(id)
       navigate("/hotels")
 
     } catch (error) {
