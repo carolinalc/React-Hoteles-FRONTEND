@@ -40,13 +40,9 @@ function Booking() {
       {details.map((each) =>{
         return(
         <div>
-<<<<<<< HEAD
-          <NavLink to={`/booking/${each.id}/details`}><ul> <h2>{each.hotelId.nombre}</h2> </ul></NavLink>
-=======
 
           <Link to={`/booking/${each._id}/details`}><ul> <h2>{each.hotelId.nombre}</h2> </ul></Link>
 
->>>>>>> 4f619b76ec409d7906182ccd24a424e0d89e0432
       </div>
         )
 
