@@ -8,8 +8,12 @@ const getProfileData = (_id) => {
     return service.get(`/profile/${_id}`)
 }
 
-const getProfileEdit = (id) => {
-    return service.patch(`/profile/${id}`)
+const getProfileEdit = (_id) => {
+    return service.patch(`/profile/${_id}`)
 }
 
-export { getProfileData, getProfileEdit, getIsAdmin }
+const getBookingProfile = (_id) => {
+    return service.get(`/profile/${_id}/booking`)
+}
+
+export { getProfileData, getProfileEdit, getIsAdmin, getBookingProfile }
