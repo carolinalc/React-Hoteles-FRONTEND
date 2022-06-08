@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom"
+import { DotLoader } from 'react-spinners'
 import { addNewHotelService,  getCategoriesPension } from '../../services/hotels.services'
 
 
 function CreateHotel() {
 
+  const [ categoriasUtils, setCategoriasUtils ] = useState([]) 
+  const [ pensionUtils, setPensionUtils ] = useState([])
+
+  const [ pension, setPension] = useState(null)
+  const [ categorias, setCategorias ] = useState(null)
   const [ nombre, setNombre ] = useState("")
   const [ estrellas, setEstrellas ] = useState("")
-  const [ categorias, setCategorias ] = useState([])
   const [ ubicacion, setUbicacion ] = useState("")
   const [ precios, setPrecios ] = useState(0)
-  const [ pension, setPension] = useState([])
   const [ descripcion, setDescripcion] = useState("")
 
   const navigate = useNavigate()
@@ -20,6 +24,10 @@ function CreateHotel() {
   const handleUbicacionChange = (e) => setUbicacion(e.target.value);
   const handlePreciosChange = (e) => setPrecios(e.target.value);
   const handleDescripcionChange = (e) => setDescripcion(e.target.value);
+  const handleCategoriasChange = (e) => setCategorias(e.target.value)
+  const handlePensionChange = (e) => setPension(e.target.value) 
+    
+
 
 //Mostrar categorias de la sección select
   useEffect(() => {
@@ -29,9 +37,9 @@ function CreateHotel() {
   const mostrarCategories = async () => {
       try {
         const response = await  getCategoriesPension()
-        setCategorias(response.data.categorias)
+        setCategoriasUtils(response.data.categorias)
         console.log(response.data.categorias)
-        setPension(response.data.pension)
+        setPensionUtils(response.data.pension)
       } catch (error) {
         navigate("/error")
       }
@@ -42,18 +50,29 @@ function CreateHotel() {
     e.preventDefault()
 
     try {
-      const formulario = new FormData()
-      formulario.append("nombre", nombre)
-      formulario.append("estrellas", estrellas)
-      const inputImg = e.target.querySelector("#img")
-      formulario.append("imagen", inputImg.target.files[0])
-      formulario.append("categorias", categorias)
-      formulario.append("ubicacion", ubicacion)
-      formulario.append("precios", precios)
-      formulario.append("pension", pension)
-      formulario.append("descripcion", descripcion)
+      // const formulario = new FormData()
+      // formulario.append("nombre", nombre)
+      // formulario.append("estrellas", estrellas)
+      // // const inputImg = e.target.querySelector("#img")
+      // // formulario.append("imagen", inputImg.target.files[0])
+      // formulario.append("categorias", categorias)
+      // formulario.append("ubicacion", ubicacion)
+      // formulario.append("precios", precios)
+      // formulario.append("pension", pension)
+      // formulario.append("descripcion", descripcion)
+
+      const formulario = {
+        nombre, 
+        estrellas, 
+        categorias, 
+        ubicacion, 
+        precios, 
+        pension, 
+        descripcion
+      }
     
-      await addNewHotelService(formulario)
+      const response = await addNewHotelService(formulario)
+      console.log(response.data)
       navigate("/hotels")
 
     } catch (error) {
@@ -61,6 +80,9 @@ function CreateHotel() {
     }
   }
 
+  if(!categoriasUtils || !pensionUtils){
+    return <DotLoader />
+  }
 
   return (
     <div>
@@ -80,14 +102,14 @@ function CreateHotel() {
            value={estrellas} 
            />
            <br />
-          <label htmlFor="categorias">Categories: </label>
+           <label htmlFor="categorias">Categories: </label>
           <select type="text"
            name='categorias'
-           >   
-              {categorias.map((eachCategoria) => {
+           onChange={handleCategoriasChange}> 
+                   {categoriasUtils.map((eachCategoria) => {
                 return (
-                  <option value={eachCategoria}> {eachCategoria} </option>  
-                )  })}                       
+                  <option value={eachCategoria}> {eachCategoria} </option>   
+                )  })}   
           </select>
           <br />
           <label htmlFor="ubicacion">Ubication: </label>
@@ -105,12 +127,13 @@ function CreateHotel() {
            />
            <br />
            <label htmlFor="pension">Pension: </label>
-          <select type="text"
-           name='pension'>
-              {pension.map((each) => {
+           <select type="text"
+           name='pension'
+           onChange={handlePensionChange}>
+                {pensionUtils.map((each) => {
                 return (
                   <option value={each}> {each} </option>   
-                )  })}        
+                )  })}  
            </select>
            <br />
            <label htmlFor="descripcion">Description: </label>
@@ -120,11 +143,11 @@ function CreateHotel() {
            value={descripcion} 
            />
            <br />
-           <label htmlFor="imagen">Image: </label>
+           {/* <label htmlFor="imagen">Image: </label>
            <input type="file"
               name='imagen'
               id="img"
-           />
+           /> */}
 
            <button type='submit'> Create</button>
       </form> 

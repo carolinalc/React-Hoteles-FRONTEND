@@ -8,8 +8,13 @@ const getAllBooking = () => {
     return service.get("/booking")
 }
 
+const deleteBooking = (idBooking) => {
+    return service.delete(`/booking/${idBooking}`)
+}
+
 
 export {
     createAllBooking,
-    getAllBooking 
+    getAllBooking,
+    deleteBooking
 }

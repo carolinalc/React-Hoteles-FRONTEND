@@ -12,9 +12,9 @@ import VerComments from '../../components/Visualizar/VerComments'
 function DetailsHotel() {
 
   const [ deatils, setDetails ] = useState(null)
-  // const [ showListEdit, setShowListEdit ] = useState(false)
-  // const [ showListDelete, setShowListDelete ] = useState(false)
-  // const [ showListComment, setShowListComment ] = useState(false)
+  const [ showListEdit, setShowListEdit ] = useState(false)
+  const [ showListDelete, setShowListDelete ] = useState(false)
+  const [ showListComment, setShowListComment ] = useState(false)
   const { id } = useParams()
 
   const { isAdm } = useContext(AuthContext)
@@ -46,20 +46,20 @@ function DetailsHotel() {
     }
   }
 
-  // const handleShowEdit = ()=> {
-  //   setShowListEdit(!showListEdit)
+ const handleShowEdit = ()=> {
+   setShowListEdit(!showListEdit)
    
-  // }
+ }
 
-  // const handleShowDelete = ()=> {
-  //   setShowListDelete(!showListDelete)
+ const handleShowDelete = ()=> {
+   setShowListDelete(!showListDelete)
    
-  // }
+ }
 
-  // const handleShowComment= ()=> {
-  //   setShowListComment(!showListComment)
+ const handleShowComment= ()=> {
+   setShowListComment(!showListComment)
    
-  // }
+ }
   
   if(deatils === null){
     return <DotLoader />
@@ -87,18 +87,18 @@ function DetailsHotel() {
       <br />
       
           <div><VerComments /></div> 
-{/* 
+
       { isAdm === true ? <button onClick={handleDelete}> Delete </button> :  <button onClick={handleShowDelete}>Booking</button> }
       { showListDelete === true &&  <CrearBooking /> } 
       <br />
       { isAdm === true ? <button onClick={handleShowEdit}> Edit </button>  : <button onClick={handleShowComment}> Comment </button> }
       { showListEdit === true && <EditHotel /> } 
-      { showListComment === true && <Comment />} */}
+      { showListComment === true && <Comment />} 
 
-      { isAdm === true ? <button onClick={handleDelete}> Delete </button> :  <CrearBooking /> }
+      {/* { isAdm === true ? <button onClick={handleDelete}> Delete </button> :  <CrearBooking /> }
 
       <br />
-      { isAdm === true ? <EditHotel />  : <Comment /> }
+      { isAdm === true ? <EditHotel />  : <Comment /> } */}
       
      </div>
   )

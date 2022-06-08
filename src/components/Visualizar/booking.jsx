@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { DotLoader } from 'react-spinners'
-import { getAllBooking } from '../../services/booking.services'
+import { getAllBooking, deleteBooking } from '../../services/booking.services'
+
 
 
 function Booking() {
@@ -27,6 +28,16 @@ function Booking() {
     }
   }
 
+  const handleDelete = async (idBooking) => {
+    try {
+      await deleteBooking(idBooking)
+      navigate("/hotels")
+
+    } catch (error) {
+      navigate("/error")
+    }
+  }
+
  if(details === null){
    return <DotLoader/>
  }
@@ -37,9 +48,9 @@ function Booking() {
       {details.map((each) =>{
         return(
         <div>
-          {/* <h2>{each.clienteId.username}</h2> */}
+          <h2>{each.clienteId.username}</h2>
           <br />
-          {/* <h2>{each.hotelId.nombre}</h2> */}
+          <h2>{each.hotelId.nombre}</h2>
           <br />
           <h2>{each.fechaEntrada}</h2>
           <br />
@@ -50,6 +61,9 @@ function Booking() {
           <h2>{each.checkin}</h2>
           <br />
           <h2>{each.comentarios}</h2>
+
+          <button onClick={handleDelete}> Delete </button>
+
       </div>
         )
 
