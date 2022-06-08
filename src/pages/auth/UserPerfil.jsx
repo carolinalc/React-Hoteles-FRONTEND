@@ -49,7 +49,7 @@ function UserPerfil() {
               <button>Edit profile</button>
         <br />
 
-          {/* <EditPerfil /> */}
+          <EditPerfil />
 
         {  isAdm === true ?  <AdminBooking />  : <ClientBooking /> }
 

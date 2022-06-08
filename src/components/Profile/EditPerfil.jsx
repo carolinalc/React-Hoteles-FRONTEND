@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { DotLoader } from 'react-spinners';
 import { uploadService } from '../../services/hotels.services';
 import { getProfileEdit } from '../../services/profile.services';
 
@@ -7,11 +8,9 @@ import { getProfileEdit } from '../../services/profile.services';
 
 function EditPerfil() {
 
-  const [ username, setUserName] = useState("");
-  const [ imagen, setImagen ] = useState("");
-  const [ email, setEmail ] = useState("")
-
-  const { id } = useParams();
+  const [ username, setUserName] = useState(null);
+  const [ imagen, setImagen ] = useState("https://res.cloudinary.com/dm5zetu40/image/upload/v1654706961/Imagen%20hoteles/MUJER-USER_idxzgl.png");
+  const [ email, setEmail ] = useState(null)
 
   const navigate = useNavigate()
 
@@ -49,7 +48,8 @@ function EditPerfil() {
 
     try {
 
-      await getProfileEdit(id, updateProfile)
+      const response = await getProfileEdit(updateProfile)
+      console.log(response.data)
       navigate("/profile")
       
     } catch (error) {
@@ -57,7 +57,7 @@ function EditPerfil() {
     }
   }
 
-  const handleIamgenChange = async (e) => {
+  const handleImagenChange = async (e) => {
 
     const uploadForm = new FormData()
     uploadForm.append("imagen", e.target.files[0])
@@ -69,6 +69,10 @@ function EditPerfil() {
     } catch (error) {
       navigate("/error")
     }
+  }
+
+  if(username === null || email === null){
+    return <DotLoader />
   }
 
   return (
@@ -92,13 +96,13 @@ function EditPerfil() {
             />
 
             <label htmlFor="imagen">Image:</label>
-            <input type="file" name="imagen" onChange={handleIamgenChange} />
+            <input type="file" name="imagen" onChange={handleImagenChange} />
 
             <button type="submit">Update</button>
 
       </form>
 
-            <img src={imagen} alt="profile-pic" width={100}/>              
+            <img src={imagen} alt="profile-pic" width={100}/>
        
     </div>
   )

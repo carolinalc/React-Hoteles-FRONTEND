@@ -5,8 +5,6 @@ import { getBookingProfile } from '../../services/profile.services'
 
 function ClientBooking() {
 
-  const {_id} = useParams()
-
   const [ dataBooking, setDataBooking] = useState(null)
   
   const navigate = useNavigate()
@@ -19,7 +17,7 @@ function ClientBooking() {
 
     try {
 
-      const response = await getBookingProfile(_id)
+      const response = await getBookingProfile()
       setDataBooking(response.data)
       console.log(response.data)
       
@@ -39,7 +37,12 @@ function ClientBooking() {
         return(
 
           <div>
+            {each.hotelId.nombre}
             {each.fechaEntrada}
+            {each.fechaSalida}
+            {each.huespedes}
+            {each.checkin}
+            {each.comentarios}
           </div>
 
         )})}
