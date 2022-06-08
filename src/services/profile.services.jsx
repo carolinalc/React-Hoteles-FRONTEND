@@ -4,8 +4,8 @@ const getIsAdmin = () =>{
     return service.get("/profile/admin")
 }
 
-const getProfileData = (_id) => {
-    return service.get(`/profile/${_id}`)
+const getProfileData = () => {
+    return service.get("/profile/user")
 }
 
 const getProfileEdit = (updateProfile) => {

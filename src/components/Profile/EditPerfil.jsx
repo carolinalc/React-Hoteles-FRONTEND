@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { DotLoader } from 'react-spinners';
 import { uploadService } from '../../services/hotels.services';
 import { getProfileEdit } from '../../services/profile.services';
 
@@ -8,10 +7,12 @@ import { getProfileEdit } from '../../services/profile.services';
 
 function EditPerfil() {
 
-  const [ username, setUserName] = useState(null);
-  const [ imagen, setImagen ] = useState("https://res.cloudinary.com/dm5zetu40/image/upload/v1654706961/Imagen%20hoteles/MUJER-USER_idxzgl.png");
-  const [ email, setEmail ] = useState(null)
+  const [ username, setUserName] = useState("");
+  const [ imagen, setImagen ] = useState("");
+  const [ email, setEmail ] = useState("")
 
+
+  
   const navigate = useNavigate()
 
   const handleUserNameChange = (e) => setUserName(e.target.value)
@@ -26,11 +27,11 @@ function EditPerfil() {
     try {
 
       const response = await getProfileData()
-      const { username, email, imagen } = response.data
-
-      setUserName(username)
-      setEmail(email)
-      setImagen(imagen)
+     
+      setUserName(response.data.username)
+      setEmail(response.data.email)
+      setImagen(response.data.imagen)
+      
       
     } catch (error) {
       navigate("/error")
@@ -39,6 +40,7 @@ function EditPerfil() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+   
 
     const updateProfile = {
       username, 
@@ -71,18 +73,15 @@ function EditPerfil() {
     }
   }
 
-  if(username === null || email === null){
-    return <DotLoader />
-  }
 
   return (
     <div>
      <form onSubmit={handleSubmit}>
 
-          <label>Username:</label>
+          <label> Username:</label>
             <input 
               type="text" 
-              Username="Username" 
+              name="username" 
               value={username} 
               onChange={handleUserNameChange} 
             />
