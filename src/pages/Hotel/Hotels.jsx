@@ -43,22 +43,22 @@ function Hoteles() {
     <div> 
      
          <div>   
-            <button onClick={handleShowCiudad}><img src={ciudadImage}  alt="hotelciudad" width={500}/></button>
+            <img src={ciudadImage}  alt="hotelciudad" width={500} onClick={handleShowCiudad}/>
              { showListCiudad === true && <ListHotelCiudad /> } 
           </div>
 
           <div>
-            <button onClick={handleShowResort}><img src={resort} alt="hotelresort" width={500}/></button> 
+             <img src={resort} alt="hotelresort" width={500} onClick={handleShowResort}/>
             { showListResort === true && <ListHotelResort /> }  
           </div>
 
           <div>
-            <button onClick={handleShowRural}><img src={rural} alt="hotelrural" width={500}/></button>
+            <img src={rural} alt="hotelrural" width={500} onClick={handleShowRural}/>
             { showListRural === true && <ListHotelRural /> }               
           </div>
 
           <div>
-            <button onClick={handleShowTematico}><img src={tematico} alt="hoteltematico" width={500}/></button>
+            <img src={tematico} alt="hoteltematico" width={500} onClick={handleShowTematico}/>
             { showListTematico === true && <ListHotelTematico/> } 
          </div>
          {/* <ListHotelCategori getAllDetailsProps={getAllDetails}/> */}

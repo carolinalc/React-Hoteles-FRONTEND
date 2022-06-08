@@ -10,6 +10,8 @@ import CreateHotel from './pages/Hotel/CreateHotel';
 import DetailsHotel from './pages/Hotel/DetailsHotel';
 import UserPerfil from './pages/auth/UserPerfil';
 
+import MyNavbar from "./components/MyNavbar"
+
 //pages => rutas error
 import Error from './pages/Error/Error';
 import NotFound from './pages/Error/NotFound';
@@ -19,7 +21,7 @@ import Signup from "./pages/auth/Signup";
 import Login from "./pages/auth/Login";
 
 //components
-import Navbar from "./components/Navbar"
+import Navbar from "./components/MyNavbar"
 
 //Private routes
 import IsPrivate from "../src/components/Autorization/IsPrivate"
@@ -29,7 +31,7 @@ import BookingDetails from './pages/Hotel/BookingDetails';
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <MyNavbar />
      
       <Routes>
         <Route path='/' element={<Home />} />

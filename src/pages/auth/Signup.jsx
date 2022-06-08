@@ -2,6 +2,10 @@ import React, { useState } from 'react'
 import { signupService } from "../../services/auth.services.jsx"
 import { useNavigate } from "react-router-dom"
 
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
+
 function Signup() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -47,45 +51,57 @@ function Signup() {
 };
   return (
     <div>
-      <h1>Signup</h1> 
-      <form onSubmit={handleSignup}>
-        <label>Name:</label>
-        <input
+            <h1> Signup </h1> 
+    <br />
+    <br />
+    <div style={{display: "flex", alignItems:"center", flexDirection: "column"}}>
+      <Form onSubmit={handleSignup} style={{width: "50%"}}>
+      <Form.Group>
+        <Form.Label>Name:</Form.Label>
+        <Form.Control
           type="text"
           name="username"
           value={username}
           onChange={handleUsernameChange}
         />
+      </Form.Group>
     <br />
-        <label>Email:</label>
-        <input
+      <Form.Group>
+        <Form.Label>Email:</Form.Label>
+        <Form.Control
           type="email"
           name="email"
           value={email}
           onChange={handleEmailChange}
         />
+      </Form.Group>
     <br />
-        <label>Password:</label>
-        <input
+      <Form.Group>
+        <Form.Label>Password:</Form.Label>
+        <Form.Control
           type="password"
           name="password"
           value={password}
           onChange={handlePasswordChange}
         />
+      </Form.Group>
     <br />
-        <label>Confirm password:</label>
-        <input
+      <Form.Group>
+        <Form.Label>Confirm password:</Form.Label>
+        <Form.Control
           type="password"
           name="password2"
           value={password2}
           onChange={handlePassword2Change}
         />
+      </Form.Group>
     <br />
-        { errorMessage !== null && <p>{errorMessage} </p>}
+        { errorMessage !== null && <Alert className="error-message" variant="danger">{errorMessage}</Alert>}
 
-        <button type="submit">Signup</button>
-      </form>  
+        <Button variant="primary" type="submit">Signup</Button>
+      </Form>
 
+      </div>
       </div>
   )
 }

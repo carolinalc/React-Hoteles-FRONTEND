@@ -2,8 +2,11 @@ import React, { useState, useContext } from 'react'
 import { loginService } from "../../services/auth.services"
 
 import { AuthContext } from "../../context/auth.context.jsx";
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 
 function Login() {
 
@@ -43,41 +46,47 @@ function Login() {
   }
 
   return (
-    <div>
-      
-      <form onSubmit={handleLogin}>
-        <label>Email:</label>
-        <input
-          type="email"
-          name="email"
-          value={email}
-          onChange={handleEmailChange}
+    <div >
+    
+          <h1>Log In</h1>    
+    <br />
+    <br />
+    <div style={{display: "flex", alignItems:"center", flexDirection: "column"}}>
+    <Form onSubmit={handleLogin} style={{width: "50%"}}>
+      <Form.Group>
+        <Form.Label>Email:</Form.Label>
+        <Form.Control 
+          type="email" 
+          name="email" 
+          value={email} 
+          onChange={handleEmailChange} 
         />
-
-        <br />
-
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePasswordChange}
+      </Form.Group>
+      <br />
+      <Form.Group>
+        <Form.Label>Password:</Form.Label>
+        <Form.Control 
+          type="password" 
+          name="password" 
+          value={password} 
+          onChange={handlePasswordChange} 
         />
+      </Form.Group>
+      <br />
+      <br />
+      <Button variant="primary" type="submit">Log In</Button>
 
-        <br />
+    </Form>
 
-        { errorMessage !== null && <p>{errorMessage}</p> }
+    { errorMessage && <Alert className="error-message" variant="danger">{errorMessage}</Alert> }
 
-        <button type="submit">Login</button>
-      </form>
-      <div>
-          <h4> If you don´t have account, signup here </h4>
-          <Link to="/hotels/signup"><button type="submit"> Signup </button></Link>
-        
-      </div>
-             
     </div>
-  )
+  
+
+
+  
+  </div>
+)
 }
 
 export default Login
