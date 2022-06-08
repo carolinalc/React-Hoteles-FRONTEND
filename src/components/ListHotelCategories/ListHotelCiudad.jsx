@@ -6,7 +6,8 @@ import {  getCiudadService } from '../../services/hotels.services'
 function ListHotelCiudad() {
 
   const [ detalleCiudad, setDetalleCiudad ] = useState(null)
-   const navigate = useNavigate()
+  
+  const navigate = useNavigate()
 
   useEffect(()=> {
      getAllCiudad()
