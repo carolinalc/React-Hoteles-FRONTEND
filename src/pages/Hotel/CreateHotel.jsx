@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom"
 import { DotLoader } from 'react-spinners'
-import { addNewHotelService,  getCategoriesPension } from '../../services/hotels.services'
+import { addNewHotelService,  getCategoriesPension, uploadService } from '../../services/hotels.services'
 
 
 function CreateHotel() {
@@ -16,6 +16,8 @@ function CreateHotel() {
   const [ ubicacion, setUbicacion ] = useState("")
   const [ precios, setPrecios ] = useState(0)
   const [ descripcion, setDescripcion] = useState("")
+  const [ imagen, setImagen ] = useState()
+  
 
   const navigate = useNavigate()
 
@@ -26,6 +28,20 @@ function CreateHotel() {
   const handleDescripcionChange = (e) => setDescripcion(e.target.value);
   const handleCategoriasChange = (e) => setCategorias(e.target.value)
   const handlePensionChange = (e) => setPension(e.target.value) 
+
+  const handleImagenChange = async (e) => {
+    
+    const uploadForm = new FormData()
+    uploadForm.append("imagen", e.target.files[0])
+      try {
+            const response = await uploadService(imagen)
+            setImagen(response)   
+
+      } catch (error) {
+        navigate("/error")
+      }
+
+  }
     
 
 
@@ -45,22 +61,13 @@ function CreateHotel() {
       }
   }
 
+
   const handleSubmit = async (e) => {
 
     e.preventDefault()
 
     try {
-      // const formulario = new FormData()
-      // formulario.append("nombre", nombre)
-      // formulario.append("estrellas", estrellas)
-      // // const inputImg = e.target.querySelector("#img")
-      // // formulario.append("imagen", inputImg.target.files[0])
-      // formulario.append("categorias", categorias)
-      // formulario.append("ubicacion", ubicacion)
-      // formulario.append("precios", precios)
-      // formulario.append("pension", pension)
-      // formulario.append("descripcion", descripcion)
-
+     
       const formulario = {
         nombre, 
         estrellas, 
@@ -68,7 +75,8 @@ function CreateHotel() {
         ubicacion, 
         precios, 
         pension, 
-        descripcion
+        descripcion,
+        imagen: imagen
       }
     
       const response = await addNewHotelService(formulario)
@@ -142,12 +150,13 @@ function CreateHotel() {
            onChange={handleDescripcionChange}
            value={descripcion} 
            />
-           <br />
-           {/* <label htmlFor="imagen">Image: </label>
+         <br />
+           <label htmlFor="imagen">Image: </label>
            <input type="file"
               name='imagen'
-              id="img"
-           /> */}
+              onChange={handleImagenChange}
+           />
+             <img src={imagen} alt="imagenedit" />
 
            <button type='submit'> Create</button>
       </form> 
