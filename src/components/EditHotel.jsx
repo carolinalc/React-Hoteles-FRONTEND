@@ -16,7 +16,7 @@ function EditHotel() {
   const [ precios, setPrecios ] = useState(0)
   const [ pension, setPension] = useState(null)
   const [ descripcion, setDescripcion] = useState("")
-  const [ imagen, setImagen ] = useState()
+  const [ imagen, setImagen ] = useState("")
 
   const navigate = useNavigate()
 
@@ -36,7 +36,7 @@ function EditHotel() {
     uploadForm.append("imagen", e.target.files[0])
       try {
             const response = await uploadService(uploadForm)
-            setImagen(response)
+            setImagen(response.data)
             
 
       } catch (error) {
@@ -74,7 +74,7 @@ function EditHotel() {
       const formularioEdit = {
         nombre, 
         estrellas, 
-        imagen: imagen,
+        imagen,
         categorias,
         ubicacion,
         precios, 
@@ -185,10 +185,9 @@ function EditHotel() {
               name='imagen'
               onChange={handleImagenChange}
            />
-             <img src={imagen} alt="imagenedit" />
-
            <button type='submit'> Update </button>
       </form> 
+      <img src={imagen} alt="imagenedit" />
     </div>
   )
 }

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { DotLoader } from 'react-spinners'
 import {getBookingDetails, deleteBooking} from '../../services/booking.services'
 
 function BookingDetails() {
 
-    const [ deatils, setDetails ] = useState(null)
+    const [ details, setDetails ] = useState(null)
 
     const { id } = useParams()
 
@@ -16,11 +17,11 @@ function BookingDetails() {
 
       const getAllDetails = async () => {
         try {
-    
+
             const response = await getBookingDetails(id)
             setDetails(response.data)
             console.log(response.data)
-           
+
         } catch (error) {
           navigate("/error")
         }
@@ -29,31 +30,36 @@ function BookingDetails() {
     const handleDelete = async () => {
         try {
           await deleteBooking(id)
-          navigate("/hotels")
-    
+          navigate("/profile")
+
         } catch (error) {
           navigate("/error")
         }
       }
-  return (
-    <div> 
 
-          <h2>{deatils.clienteId.username}</h2>
+      if(details === null){
+        return <DotLoader/>
+      }
+
+  return (
+    <div>
+
+          <h2>{details.clienteId.username}</h2> 
           <br />
-          <h2>{deatils.hotelId.nombre}</h2>
+         <h2>{details.hotelId.nombre}</h2> 
           <br />
-          <h2>{deatils.fechaEntrada}</h2>
+          <h2>{details.fechaEntrada}</h2>
           <br />
-          <h2>{deatils.fechaSalida}</h2>
+          <h2>{details.fechaSalida}</h2>
           <br />
-          <h2>{deatils.huespedes}</h2>
+          <h2>{details.huespedes}</h2>
           <br />
-          <h2>{deatils.checkin}</h2>
+          <h2>{details.checkin}</h2>
           <br />
-          <h2>{deatils.comentarios}</h2>
-        
-        <button onClick={handleDelete}> Delete </button>
-    
+          <h2>{details.comentarios}</h2>
+
+         <button onClick={handleDelete}> Delete </button> 
+
     </div>
   )
 }

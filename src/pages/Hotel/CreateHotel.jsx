@@ -16,7 +16,7 @@ function CreateHotel() {
   const [ ubicacion, setUbicacion ] = useState("")
   const [ precios, setPrecios ] = useState(0)
   const [ descripcion, setDescripcion] = useState("")
-  const [ imagen, setImagen ] = useState()
+  const [ imagen, setImagen ] = useState("https://res.cloudinary.com/dm5zetu40/image/upload/v1654694431/Imagen%20hoteles/HOTEL_l2o6rc.png")
   
 
   const navigate = useNavigate()
@@ -34,8 +34,8 @@ function CreateHotel() {
     const uploadForm = new FormData()
     uploadForm.append("imagen", e.target.files[0])
       try {
-            const response = await uploadService(imagen)
-            setImagen(response)   
+            const response = await uploadService(uploadForm)
+            setImagen(response.data)   
 
       } catch (error) {
         navigate("/error")
@@ -76,7 +76,7 @@ function CreateHotel() {
         precios, 
         pension, 
         descripcion,
-        imagen: imagen
+        imagen
       }
     
       const response = await addNewHotelService(formulario)
@@ -156,10 +156,11 @@ function CreateHotel() {
               name='imagen'
               onChange={handleImagenChange}
            />
-             <img src={imagen} alt="imagenedit" />
-
+            
            <button type='submit'> Create</button>
       </form> 
+
+      <img src={imagen} alt="imagenedit" />
     </div>
   )
 }

@@ -6,6 +6,7 @@ import { getProfileEdit } from '../../services/profile.services';
 
 
 function EditPerfil() {
+
   const [ username, setUserName] = useState("");
   const [ imagen, setImagen ] = useState("");
   const [ email, setEmail ] = useState("")
