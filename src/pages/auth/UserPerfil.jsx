@@ -6,6 +6,7 @@ import ClientBooking from '../../components/Profile/ClientBooking';
 import { getProfileData } from "../../services/profile.services"
 import { useContext } from 'react'
 import { AuthContext } from "../../context/auth.context.jsx"
+import EditPerfil from '../../components/Profile/EditPerfil';
 
 
 function UserPerfil() {
@@ -45,7 +46,10 @@ function UserPerfil() {
               <p>Name: {user.username}</p>
               <br />
               <p>Email: {user.email}</p>
+              <button>Edit profile</button>
         <br />
+
+          {/* <EditPerfil /> */}
 
         {  isAdm === true ?  <AdminBooking />  : <ClientBooking /> }
 

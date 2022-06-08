@@ -38,7 +38,7 @@ function App() {
         <Route path='/hotels/create' element={<IsPrivate><CreateHotel /></IsPrivate>} />
         <Route path='/hotels/:id' element={<IsPrivate><DetailsHotel /></IsPrivate>} />
         <Route path='/profile' element={<IsPrivate><UserPerfil /></IsPrivate>} />
-        <Route path='/booking/:id/details' element={<IsPrivate><IsAdmin><BookingDetails /></IsAdmin></IsPrivate>} />
+        <Route path='/booking/:id/details' element={<IsPrivate><BookingDetails /></IsPrivate>} />
 
         {/* auth FE routes */}
         <Route path="/signup" element={<Signup />} />

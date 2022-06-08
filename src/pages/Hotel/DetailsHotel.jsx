@@ -11,7 +11,7 @@ import VerComments from '../../components/Visualizar/VerComments'
 
 function DetailsHotel() {
 
-  const [ deatils, setDetails ] = useState(null)
+  const [ details, setDetails ] = useState(null)
   const [ showListEdit, setShowListEdit ] = useState(false)
   const [ showListDelete, setShowListDelete ] = useState(false)
   const [ showListComment, setShowListComment ] = useState(false)
@@ -61,7 +61,7 @@ function DetailsHotel() {
    
  }
   
-  if(deatils === null){
+  if(details === null){
     return <DotLoader />
   }
 
@@ -69,21 +69,21 @@ function DetailsHotel() {
 
   return (
     <div>
-      <h2>{deatils.nombre}</h2>
+      <h2>{details.nombre}</h2>
       <br />
-      <img src={deatils.image} alt="imagenHotel" />
+      <img src={details.imagen} alt="imagenHotel" width={50}/>
       <br />
-      <p>{deatils.estrellas}</p>
+      <p>{details.estrellas}</p>
       <br />
-      <p>{deatils.categorias}</p>
+      <p>{details.categorias}</p>
       <br />
-      <p>{deatils.ubicacion}</p>
+      <p>{details.ubicacion}</p>
       <br />
-      <p>{deatils.precios}</p>
+      <p>{details.precios}</p>
       <br />
-      <p>{deatils.pension}</p>
+      <p>{details.pension}</p>
       <br />
-      <p>{deatils.descripcion}</p>
+      <p>{details.descripcion}</p>
       <br />
       
           <div><VerComments /></div> 

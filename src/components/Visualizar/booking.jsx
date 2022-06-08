@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink, useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { DotLoader } from 'react-spinners'
 import { getAllBooking } from '../../services/booking.services'
 
@@ -40,7 +40,7 @@ function Booking() {
       {details.map((each) =>{
         return(
         <div>
-          <NavLink to={`/booking/${each.id}/details`}><ul> <h2>{each.hotelId.nombre}</h2> </ul></NavLink>
+          <Link to={`/booking/${each._id}/details`}><ul> <h2>{each.hotelId.nombre}</h2> </ul></Link>
       </div>
         )
 
