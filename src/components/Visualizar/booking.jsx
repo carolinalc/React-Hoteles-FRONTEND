@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import { DotLoader } from 'react-spinners'
-import { getAllBooking, deleteBooking } from '../../services/booking.services'
+import { getAllBooking } from '../../services/booking.services'
 
 
 
@@ -40,7 +40,7 @@ function Booking() {
       {details.map((each) =>{
         return(
         <div>
-          <NavLink to={`/hotels/${each.id}`}><ul> <h2>{each.hotelId.nombre}</h2> </ul></NavLink>
+          <NavLink to={`/booking/${each.id}/details`}><ul> <h2>{each.hotelId.nombre}</h2> </ul></NavLink>
       </div>
         )
 

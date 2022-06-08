@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import {getAllBooking, deleteBooking} from '../../services/booking.services'
+import {getBookingDetails, deleteBooking} from '../../services/booking.services'
 
 function BookingDetails() {
 
@@ -17,7 +17,7 @@ function BookingDetails() {
       const getAllDetails = async () => {
         try {
     
-            const response = await getAllBooking(id)
+            const response = await getBookingDetails(id)
             setDetails(response.data)
             console.log(response.data)
            
