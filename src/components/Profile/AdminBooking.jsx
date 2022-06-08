@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Booking from '../Visualizar/Bookingpatata.jsx';
+import Booking from '../Visualizar/Booking.jsx';
 
 function AdminBooking() {
 
