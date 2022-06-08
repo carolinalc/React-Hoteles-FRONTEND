@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { Routes, Route } from "react-router";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -22,6 +23,8 @@ import Navbar from "./components/Navbar"
 
 //Private routes
 import IsPrivate from "../src/components/Autorization/IsPrivate"
+import IsAdmin from '../src/components/Autorization/IsAdmin'
+import BookingDetails from './pages/Hotel/BookingDetails';
 
 function App() {
   return (
@@ -35,6 +38,7 @@ function App() {
         <Route path='/hotels/create' element={<IsPrivate><CreateHotel /></IsPrivate>} />
         <Route path='/hotels/:id' element={<IsPrivate><DetailsHotel /></IsPrivate>} />
         <Route path='/profile' element={<IsPrivate><UserPerfil /></IsPrivate>} />
+        <Route path='/booking/:id/details' element={<IsPrivate><IsAdmin><BookingDetails /></IsAdmin></IsPrivate>} />
 
         {/* auth FE routes */}
         <Route path="/signup" element={<Signup />} />

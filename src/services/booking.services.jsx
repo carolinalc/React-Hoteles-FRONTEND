@@ -12,9 +12,14 @@ const deleteBooking = (id) => {
     return service.delete(`/booking/${id}/delete`)
 }
 
+const getBookingDetails = (id) => {
+    return service.get(`/booking/${id}/details`)
+}
+
 
 export {
     createAllBooking,
     getAllBooking,
-    deleteBooking
+    deleteBooking, 
+    getBookingDetails
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { createComments } from '../services/comment.services'
 import { getCategoriesPension } from '../services/hotels.services'
+import Button from 'react-bootstrap/Button';
 
 function Comment() {
 
@@ -82,7 +83,7 @@ function Comment() {
                 )  })}  
                 </select>
        <br />
-       <button type='submit'>Add Comment</button>   
+       <Button type='submit'>Add Comment</Button>   
        </form>
        </div>
   )
