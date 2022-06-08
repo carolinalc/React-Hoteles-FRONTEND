@@ -82,7 +82,8 @@ function EditHotel() {
         descripcion
       }
 
-   
+
+    
      const response = await editHotelService(id, formularioEdit)
      console.log("data edit formulario:", response.data)
       navigate("/hotels")
