@@ -38,6 +38,10 @@ const deleteHotelService = (id) => {
     return service.delete(`/hotels/${id}`)
 }
 
+const uploadService = (uploadForm) => {
+    return service.post("/uploader", uploadForm)
+}
+
 
 export {
     getAllHotelService, 
@@ -49,5 +53,6 @@ export {
     getHotelDetailsService, 
     editHotelService, 
     deleteHotelService,  
-    getCategoriesPension 
+    getCategoriesPension,
+    uploadService
 }

@@ -1,6 +1,7 @@
+import { upload } from '@testing-library/user-event/dist/upload'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from "react-router-dom"
-import { editHotelService, getCategoriesPension, getHotelDetailsService } from '../services/hotels.services'
+import { editHotelService, getCategoriesPension, getHotelDetailsService, uploadService } from '../services/hotels.services'
 
 function EditHotel() {
 
@@ -15,6 +16,7 @@ function EditHotel() {
   const [ precios, setPrecios ] = useState(0)
   const [ pension, setPension] = useState(null)
   const [ descripcion, setDescripcion] = useState("")
+  const [ imagen, setImagen ] = useState()
 
   const navigate = useNavigate()
 
@@ -27,6 +29,21 @@ function EditHotel() {
   const handleDescripcionChange = (e) => setDescripcion(e.target.value);
   const handleCategoriasChange = (e) => setCategorias(e.target.value)
   const handlePensionChange = (e) => setPension(e.target.value)
+
+  const handleImagenChange = async (e) => {
+    
+    const uploadForm = new FormData()
+    uploadForm.append("imagen", e.target.files[0])
+      try {
+            const response = await uploadService(uploadForm)
+            setImagen(response)
+            
+
+      } catch (error) {
+        navigate("/error")
+      }
+
+  }
 
   //Mostrar categorias de la sección select
 
@@ -54,19 +71,18 @@ function EditHotel() {
 
     try {
 
-    const formularioEdit = new FormData()
+      const formularioEdit = {
+        nombre, 
+        estrellas, 
+        imagen: imagen,
+        categorias,
+        ubicacion,
+        precios, 
+        pension,
+        descripcion
+      }
 
-     formularioEdit.append("nombre", nombre)
-     formularioEdit.append("estrellas", estrellas)
-     const inputImg = e.target.querySelector("#img")
-     formularioEdit.append("imagen", inputImg.files[0])
-     formularioEdit.append("categorias", categorias)
-     formularioEdit.append("ubicacion", ubicacion)
-     formularioEdit.append("precios", precios)
-     formularioEdit.append("pension", pension)
-     formularioEdit.append("descripcion", descripcion)
-
-    
+   
      const response = await editHotelService(id, formularioEdit)
      console.log("data edit formulario:", response.data)
       navigate("/hotels")
@@ -78,12 +94,11 @@ function EditHotel() {
   };
 
 
-
   const getAllDetails = async () => {
     try {
 
       const response = await getHotelDetailsService(id)
-      const { nombre, estrellas, categoriasUtils, ubicacion, precios, pensionUtils, descripcion } = response.data
+      const { nombre, estrellas, categoriasUtils, ubicacion, precios, pensionUtils, descripcion, imagen } = response.data
 
       setNombre(nombre)
       setEstrellas(estrellas)
@@ -92,6 +107,7 @@ function EditHotel() {
       setPrecios(precios)
       setPension(pensionUtils)
       setDescripcion(descripcion)
+      setImagen(imagen)
 
       
     } catch (error) {
@@ -166,8 +182,9 @@ function EditHotel() {
            <label htmlFor="imagen">Image: </label>
            <input type="file"
               name='imagen'
-              id="img"
+              onChange={handleImagenChange}
            />
+             <img src={imagen} alt="imagenedit" />
 
            <button type='submit'> Update </button>
       </form> 
