@@ -60,7 +60,7 @@ function Comment() {
   }
   
   return (
-    <div>
+    <div style={{display: "flex", alignItems:"center", flexDirection: "column"}}>
       
     <form onSubmit={handleCreateComment}>
        <br />  

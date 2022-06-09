@@ -3,6 +3,10 @@ import {  useNavigate, useParams } from 'react-router-dom'
 import { createAllBooking } from '../services/booking.services'
 import { getCategoriesPension } from '../services/hotels.services'
 
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
+
 function CrearBooking() {
 
   const {id} = useParams()
@@ -72,31 +76,39 @@ function CrearBooking() {
 
 
   return (
-    <div>
-        <form onSubmit={hadleCreateBooking}>
-          <label htmlFor="fechaEntrada">Date In: </label>
-                <input type="date"
+    
+    <div style={{display: "flex", alignItems:"center", flexDirection: "column"}}>
+    <Form onSubmit={hadleCreateBooking} style={{width: "50%"}}>
+        <Form.Group>
+          <Form.Label htmlFor="fechaEntrada">Date In: </Form.Label>
+                <Form.Control type="date"
                 name='fechaEntrada'
                 onChange={handleFechaEntradaChange}
                 value={fechaEntrada} 
                 />
+        </Form.Group>
            <br />
-           <label htmlFor="fechaSalida">Date Out: </label>
-                <input type="date"
+        <Form.Group>
+           <Form.Label htmlFor="fechaSalida">Date Out: </Form.Label>
+                <Form.Control type="date"
                 name='fechaSalida'
                 onChange={handleFechaSalidaChange}
                 value={fechaSalida} 
                 />
+        </Form.Group>
            <br />
-           <label htmlFor="huespedes">Guests: </label>
-                <input type="number"
+        <Form.Group>
+           <Form.Label htmlFor="huespedes">Guests: </Form.Label>
+                <Form.Control type="number"
                 name='huespedes'
                 onChange={handleHuespedesChange}
                 value={huespedes} 
                 />
+        </Form.Group>
            <br />
-            <label htmlFor="checkin">Check In: </label>
-                <select type="text"
+        <Form.Group>
+            <Form.Label htmlFor="checkin">Check In: </Form.Label>
+                <Form.Select type="text"
                 name='checkin'
                 onChange={handleCheckinChange}
                 >  
@@ -104,18 +116,26 @@ function CrearBooking() {
                   return(
                       <option value={each}> {each} </option>
                   ) }) }     
-                </select> 
+                </Form.Select> 
+        </Form.Group>
            <br /> 
-           <label htmlFor="comment">Comment: </label>
-                <textarea type="text"
+        <Form.Group>
+           <Form.Label htmlFor="comment">Comment: </Form.Label>
+                <Form.Control
+                as="textarea"
+                type="text"
                 name='comment'
                 onChange={handleComentariosChange}
                 value={comentarios} 
                 />
-           <br />   
-           <button type='submit'>Add booking</button>        
-      </form>
+           <br />  
+        </Form.Group> 
+           <Button type='submit'>Add booking</Button>        
+           </Form>
+           
     </div>
+    
+    
   )
 }
 
