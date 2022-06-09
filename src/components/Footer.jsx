@@ -7,13 +7,11 @@ function Footer() {
   return (
     <div className='footer'>
 
-
-        
-        <Card fixed="bottom" >
-        <Card.Footer >
+        <Card >
+        <Card.Body >
            <p>React Hotel by María Díez & Carolina López. 
             Know more <NavLink to="/about">About Us</NavLink></p>
-        </Card.Footer>
+        </Card.Body>
         </Card>
 
     </div>

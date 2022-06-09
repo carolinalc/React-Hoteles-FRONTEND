@@ -13,12 +13,16 @@ body{
 height: 100% !important;
 }
 
-
-/* .navbar{
+.footer{
   position: fixed;
-  top: 0px;
-  width: 100%;
-} */
+  bottom: 0px;
+  align-content: center;
+}
+
+
+.navbar{
+  margin-bottom: 50px;
+} 
 
 .d-block {
  width: 700px;
@@ -234,4 +238,6 @@ img {
 .name-bookings {
   color: #7ACE67;
 }
+
+
 
