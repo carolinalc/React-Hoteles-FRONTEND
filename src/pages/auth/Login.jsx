@@ -20,11 +20,11 @@ function Login() {
 
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
-  
+
   const handleLogin = async (e) => {
     e.preventDefault();
     const user = {
-      email, 
+      email,
       password
     }
 
@@ -36,8 +36,8 @@ function Login() {
       navigate("/hotels")
 
 
-    } catch (error){
-      if(error.response.status === 400 || error.response.status === 401 ){
+    } catch (error) {
+      if (error.response.status === 400 || error.response.status === 401) {
         setErrorMessage(error.response.data.errorMessage)
       } else {
         navigate("/error")
@@ -47,46 +47,46 @@ function Login() {
 
   return (
     <div >
-    
-          <h1>Log In</h1>    
-    <br />
-    <br />
-    <div style={{display: "flex", alignItems:"center", flexDirection: "column"}}>
-    <Form onSubmit={handleLogin} style={{width: "50%"}}>
-      <Form.Group>
-        <Form.Label>Email:</Form.Label>
-        <Form.Control 
-          type="email" 
-          name="email" 
-          value={email} 
-          onChange={handleEmailChange} 
-        />
-      </Form.Group>
-      <br />
-      <Form.Group>
-        <Form.Label>Password:</Form.Label>
-        <Form.Control 
-          type="password" 
-          name="password" 
-          value={password} 
-          onChange={handlePasswordChange} 
-        />
-      </Form.Group>
-      <br />
-      <br />
-      <Button type="submit">Log In</Button>
 
-    </Form>
+      <h1>Log In</h1>
+      <br />
+      <br />
+      <div style={{ display: "flex", alignItems: "center", flexDirection: "column" }}>
+        <Form onSubmit={handleLogin} style={{ width: "50%" }}>
+          <Form.Group>
+            <Form.Label>Email:</Form.Label>
+            <Form.Control
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleEmailChange}
+            />
+          </Form.Group>
+          <br />
+          <Form.Group>
+            <Form.Label>Password:</Form.Label>
+            <Form.Control
+              type="password"
+              name="password"
+              value={password}
+              onChange={handlePasswordChange}
+            />
+          </Form.Group>
+          <br />
+          <br />
+          <Button type="submit">Log In</Button>
 
-    { errorMessage && <Alert className="error-message" variant="danger">{errorMessage}</Alert> }
+        </Form>
+
+        {errorMessage && <Alert className="error-message" variant="danger">{errorMessage}</Alert>}
+
+      </div>
+
+
+
 
     </div>
-  
-
-
-  
-  </div>
-)
+  )
 }
 
 export default Login
