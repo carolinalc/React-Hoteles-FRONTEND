@@ -100,7 +100,7 @@ function CreateHotel() {
       <h3>Create a new Hotel</h3>
       <Form onSubmit={handleSubmit} style={{ width: "50%" }}>
         <Form.Group>
-          <Form.Label htmlFor="nombre">Name: </Form.Label>
+          <Form.Label htmlFor="nombre"><strong> Name: </strong> &nbsp; </Form.Label>
           <Form.Control type="text"
             name='nombre'
             onChange={handleNameChange}
@@ -109,7 +109,7 @@ function CreateHotel() {
         </Form.Group>
         <br />
         <Form.Group>
-          <Form.Label htmlFor="estrellas">Starts: </Form.Label>
+          <Form.Label htmlFor="estrellas"><strong> Starts: </strong> &nbsp; </Form.Label>
           <Form.Control type="text"
             name='estrellas'
             onChange={handleEstrellasChange}
@@ -118,7 +118,7 @@ function CreateHotel() {
         </Form.Group>
         <br />
         <Form.Group>
-          <Form.Label htmlFor="categorias">Categories: </Form.Label>
+          <Form.Label htmlFor="categorias"><strong>Categories: </strong> &nbsp; </Form.Label>
           <Form.Select type="text"
             name='categorias'
             onChange={handleCategoriasChange}>
@@ -131,7 +131,7 @@ function CreateHotel() {
         </Form.Group>
         <br />
         <Form.Group>
-          <Form.Label htmlFor="ubicacion">Ubication: </Form.Label>
+          <Form.Label htmlFor="ubicacion"><strong> Location: </strong> &nbsp;</Form.Label>
           <Form.Control type="text"
             name='ubicacion'
             onChange={handleUbicacionChange}
@@ -140,7 +140,7 @@ function CreateHotel() {
         </Form.Group>
         <br />
         <Form.Group>
-          <Form.Label htmlFor="precios">Prices: </Form.Label>
+          <Form.Label htmlFor="precios"><strong> Prices: </strong> &nbsp;</Form.Label>
           <Form.Control type="number"
             name='precios'
             onChange={handlePreciosChange}
@@ -149,7 +149,7 @@ function CreateHotel() {
         </Form.Group>
         <br />
         <Form.Group>
-          <Form.Label htmlFor="pension">Pension: </Form.Label>
+          <Form.Label htmlFor="pension"><strong> Pension: </strong> &nbsp; </Form.Label>
           <Form.Select type="text"
             name='pension'
             onChange={handlePensionChange}>
@@ -162,7 +162,7 @@ function CreateHotel() {
         </Form.Group>
         <br />
         <Form.Group>
-          <Form.Label htmlFor="descripcion">Description: </Form.Label>
+          <Form.Label htmlFor="descripcion"><strong> Description: </strong> &nbsp;</Form.Label>
           <Form.Control type="text"
             name='descripcion'
             onChange={handleDescripcionChange}
@@ -171,12 +171,13 @@ function CreateHotel() {
         </Form.Group>
         <br />
         <Form.Group>
-          <Form.Label htmlFor="imagen">Image: </Form.Label>
+          <Form.Label htmlFor="imagen"><strong> Image: </strong> &nbsp; </Form.Label>
           <Form.Control type="file"
             name='imagen'
             onChange={handleImagenChange}
           />
         </Form.Group>
+        <br />
         <Button type='submit'> Create </Button>
       </Form>
 

@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { DotLoader } from 'react-spinners'
-import { getBookingProfile } from '../../services/profile.services'
+import { getBookingProfile, deleteBookingUser } from '../../services/profile.services'
 import Card from "react-bootstrap/Card"
+import Button from 'react-bootstrap/Button';
+
 
 function ClientBooking() {
 
   const [ dataBooking, setDataBooking] = useState(null)
+  
+  
   
   const navigate = useNavigate()
 
@@ -27,10 +31,20 @@ function ClientBooking() {
     }
   }
 
+  
+  const handleDelete = async () => {
+    try {
+      await deleteBookingUser()
+      navigate("/hotels")
+
+    } catch (error) {
+      navigate("/error")
+    }
+  }
+
   if(dataBooking === null){
     return <DotLoader />
   }
-
 
   return (
     <div>
@@ -49,6 +63,7 @@ function ClientBooking() {
                 <p><strong>Comments: </strong> &nbsp; {each.comentarios} </p>    
                 </Card.Body>
              </Card>
+             <Button onClick={handleDelete}> Delete </Button> 
           </div>
 
         )})}

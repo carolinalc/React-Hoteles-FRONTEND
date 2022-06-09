@@ -1,6 +1,6 @@
 import service from "./config.services";
 
-const getIsAdmin = () =>{
+const getIsAdmin = () => {
     return service.get("/profile/admin")
 }
 
@@ -16,4 +16,14 @@ const getBookingProfile = () => {
     return service.get("/profile/booking")
 }
 
-export { getProfileData, getProfileEdit, getIsAdmin, getBookingProfile }
+const deleteBookingUser = () => {
+    return service.delete(`/profile/delete`)
+}
+
+export { 
+    getProfileData, 
+    getProfileEdit, 
+    getIsAdmin, 
+    getBookingProfile, 
+    deleteBookingUser 
+}
