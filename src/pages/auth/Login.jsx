@@ -74,7 +74,7 @@ function Login() {
       </Form.Group>
       <br />
       <br />
-      <Button variant="primary" type="submit">Log In</Button>
+      <Button type="submit">Log In</Button>
 
     </Form>
 
