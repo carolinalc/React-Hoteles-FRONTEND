@@ -1,31 +1,31 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { DotLoader } from 'react-spinners'
-import {  getCiudadService } from '../../services/hotels.services'
+import { getCiudadService } from '../../services/hotels.services'
 
 function ListHotelCiudad() {
 
-  const [ detalleCiudad, setDetalleCiudad ] = useState(null)
-  
+  const [detalleCiudad, setDetalleCiudad] = useState(null)
+
   const navigate = useNavigate()
 
-  useEffect(()=> {
-     getAllCiudad()
-     }, [])
+  useEffect(() => {
+    getAllCiudad()
+  }, [])
 
-  const  getAllCiudad = async () => {
+  const getAllCiudad = async () => {
     try {
-      
+
       const response = await getCiudadService()
-          setDetalleCiudad(response.data)
-         
+      setDetalleCiudad(response.data)
+
     } catch (error) {
       navigate("/error")
     }
   }
 
 
-  if (detalleCiudad === null){
+  if (detalleCiudad === null) {
     return <DotLoader />
   }
 
@@ -35,11 +35,11 @@ function ListHotelCiudad() {
         detalleCiudad.map((eachCiudad) => {
           return (
             <NavLink className="navlink" to={`/hotels/${eachCiudad._id}`}> <li>{eachCiudad.nombre} </li></NavLink>
-          )        
+          )
         })
       }
-        
-    </div> 
+
+    </div>
   )
 }
 

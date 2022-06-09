@@ -4,13 +4,13 @@ import { Navigate } from "react-router-dom"
 
 function IsPrivate(props) {
 
-    const { isLogging } = useContext(AuthContext)
-  
-    if( isLogging  === true ){
-      return props.children
-    } else {
-      return <Navigate to="/login" />
-    }  
+  const { isLogging } = useContext(AuthContext)
+
+  if (isLogging === true) {
+    return props.children
+  } else {
+    return <Navigate to="/login" />
   }
-  
-  export default IsPrivate
+}
+
+export default IsPrivate

@@ -1,46 +1,46 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { DotLoader } from 'react-spinners'
-import {  getResortService } from '../../services/hotels.services'
+import { getResortService } from '../../services/hotels.services'
 
 function ListHotelResort() {
-  const [ detalleResort, setDetalleResort ] = useState(null)
-   const navigate = useNavigate()
-   
-  useEffect(()=> {
+  const [detalleResort, setDetalleResort] = useState(null)
+  const navigate = useNavigate()
+
+  useEffect(() => {
     getAllResort()
-    }, [])
+  }, [])
 
-    const  getAllResort = async () => {
-      try {
-        
-        const response = await getResortService()
-            setDetalleResort(response.data)
-        
-      } catch (error) {
-        navigate("/error")
-      }
+  const getAllResort = async () => {
+    try {
+
+      const response = await getResortService()
+      setDetalleResort(response.data)
+
+    } catch (error) {
+      navigate("/error")
     }
-  
-  
-    if (detalleResort === null){
-      return <DotLoader />
-    }
-
-
-    return (
-      <div>
-        {
-          detalleResort.map((eachResort) => {
-            return (
-              <NavLink className="navlink" to={`/hotels/${eachResort._id}`}> <li>{eachResort.nombre} </li></NavLink>
-            )        
-          })
-        }
-          
-      </div> 
-    )
   }
+
+
+  if (detalleResort === null) {
+    return <DotLoader />
+  }
+
+
+  return (
+    <div>
+      {
+        detalleResort.map((eachResort) => {
+          return (
+            <NavLink className="navlink" to={`/hotels/${eachResort._id}`}> <li>{eachResort.nombre} </li></NavLink>
+          )
+        })
+      }
+
+    </div>
+  )
+}
 
 export default ListHotelResort
 
@@ -48,4 +48,4 @@ export default ListHotelResort
 
 
 
-  
+
