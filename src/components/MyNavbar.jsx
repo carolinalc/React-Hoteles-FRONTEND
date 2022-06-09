@@ -22,27 +22,33 @@ function MyNavbar() {
   return (
     <div>
       { isLogging === true ? (
-         <Navbar bg="#84b09b" variant="#84b09b">
+         <Navbar bg="light" variant="light" collapseOnSelect expand="lg">
             <Container>
-                <Navbar.Brand as={NavLink} to="/"> Home </Navbar.Brand>
+              <Navbar.Brand as={NavLink} to="/"> Home </Navbar.Brand>
+              <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+              <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto">
                     <Nav.Link as={NavLink} to="/about" >A bout </Nav.Link>
                     <Nav.Link as={NavLink} to="/hotels" > Hoteles </Nav.Link>
                     <Nav.Link as={NavLink} to="/profile" > Perfil </Nav.Link>
                 <Nav.Link onClick={handleLogout}> Logout </Nav.Link>
                 </Nav>
+                </Navbar.Collapse>
             </Container>
           </Navbar>
       ): (
-        <Navbar bg="#84b09b" variant="#84b09b">
-          <Container>
+        <Navbar bg="light" variant="light" collapseOnSelect expand="lg">
+            <Container>
+              <Navbar.Brand as={NavLink} to="/"> Home </Navbar.Brand>
+              <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+              <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">
-                    <Nav.Link as={NavLink} to="/"> Home </Nav.Link>
                     <Nav.Link as={NavLink} to="/about" > About </Nav.Link>
                     <Nav.Link as={NavLink} to="/hotels" > Hoteles </Nav.Link>
                     <Nav.Link as={NavLink} to="/signup" > Signup </Nav.Link>
                     <Nav.Link as={NavLink} to="/login" > Login </Nav.Link>
               </Nav>
+              </Navbar.Collapse>
           </Container>
           </Navbar>
       )

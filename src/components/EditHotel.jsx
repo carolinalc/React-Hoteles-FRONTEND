@@ -1,6 +1,7 @@
 import { upload } from '@testing-library/user-event/dist/upload'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from "react-router-dom"
+import { DotLoader } from 'react-spinners'
 import { editHotelService, getCategoriesPension, getHotelDetailsService, uploadService } from '../services/hotels.services'
 
 function EditHotel() {
@@ -118,7 +119,7 @@ function EditHotel() {
 
 
     if(!categoriasUtils || !pensionUtils){
-      return <h3>...Loading</h3>
+      return <DotLoader />
     }
 
   return (

@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate, useParams } from 'react-router-dom';
+import { DotLoader } from 'react-spinners';
+import { AuthContext } from '../../context/auth.context';
 import { uploadService } from '../../services/hotels.services';
-import { getProfileEdit } from '../../services/profile.services';
+import { getProfileData, getProfileEdit } from '../../services/profile.services';
 
 
 
 function EditPerfil() {
 
-  const [ username, setUserName] = useState(null);
-  const [ imagen, setImagen ] = useState();
-  const [ email, setEmail ] = useState(null)
+  const [ username, setUserName] = useState("");
+  const [ imagen, setImagen ] = useState("");
+  const [ email, setEmail ] = useState("")
   
   const navigate = useNavigate()
+
+  const { id } = useParams()
 
   const handleUserNameChange = (e) => setUserName(e.target.value)
   const handleEmailChange = (e) => setEmail(e.target.value)
@@ -32,14 +36,14 @@ function EditPerfil() {
   }
 
   useEffect(() => {
-    getProfileData()
+    getProfileDetails()
   }, [])
 
-  const getProfileData= async () =>{
+  const getProfileDetails= async () =>{
 
     try {
 
-      const response = await getProfileData()
+      const response = await getProfileData(id)
      
       setUserName(response.data.username)
       setEmail(response.data.email)
@@ -63,9 +67,9 @@ function EditPerfil() {
 
     try {
 
-      const response = await getProfileEdit(updateProfile)
+      const response = await getProfileEdit(id, updateProfile)
       console.log(response.data)
-      navigate("/profile")
+      Navigate("/profile")
       
     } catch (error) {
       navigate("/error")
@@ -73,7 +77,9 @@ function EditPerfil() {
   }
 
 
-
+  if(!email || !username){
+    return <DotLoader />
+  }
 
   return (
     <div>
