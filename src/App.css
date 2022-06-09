@@ -211,3 +211,14 @@ img {
   width: 75px;
   margin: 25px auto;
 }
+
+.comment-title, .name-hotels {
+  color: #31B189;
+}
+
+.name-bookings {
+  color: #7ACE67;
+}
+
+
+
