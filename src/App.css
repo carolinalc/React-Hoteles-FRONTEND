@@ -1,8 +1,16 @@
+body{
+  height: 100vh !important;
+}
+
 .App {
   text-align: center;
   align-items: center;
   background: #F8E6CB fixed;
-   
+  height: 100% !important;
+}
+
+#root{
+height: 100% !important;
 }
 
 /* .footer{
