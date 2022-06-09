@@ -8,6 +8,7 @@ import { AuthContext } from "../../context/auth.context.jsx"
 import Comment from '../../components/Comment'
 import CrearBooking from '../../components/CrearBooking'
 import VerComments from '../../components/Visualizar/VerComments'
+import Card from "react-bootstrap/Card"
 
 function DetailsHotel() {
 
@@ -69,22 +70,27 @@ function DetailsHotel() {
 
   return (
     <div>
-      <h2>{details.nombre}</h2>
       <br />
-      <img src={details.imagen} alt="imagenHotel" width={50}/>
-      <br />
-      <p>{details.estrellas}</p>
-      <br />
-      <p>{details.categorias}</p>
-      <br />
-      <p>{details.ubicacion}</p>
-      <br />
-      <p>{details.precios}</p>
-      <br />
-      <p>{details.pension}</p>
-      <br />
-      <p>{details.descripcion}</p>
-      <br />
+      <Card>
+      <Card.Img variant="top" src={details.imagen} alt="imagenHotel" width={50} />
+        <Card.Body>
+          <Card.Text>
+              <h2>{details.nombre}</h2> 
+              <br />
+              <p>{details.estrellas}</p>
+              <br />
+              <strong></strong>
+              <p> <strong>Categories: </strong> &nbsp; {details.categorias}</p>
+              <br />
+              <p><strong> Location: </strong> &nbsp;  {details.ubicacion}</p>
+              <br />
+              <p><strong> Prices: </strong> &nbsp; {details.precios} € &nbsp; &nbsp; &nbsp; <strong> Pension: </strong> &nbsp; {details.pension} </p>
+              <br />
+              <p><strong> Description: </strong> &nbsp; {details.descripcion}</p>
+              <br />
+          </Card.Text>
+        </Card.Body>
+      </Card>   
       
           <div><VerComments /></div> 
 
@@ -95,11 +101,6 @@ function DetailsHotel() {
       { showListEdit === true && <EditHotel /> } 
       { showListComment === true && <Comment />} 
 
-      {/* { isAdm === true ? <button onClick={handleDelete}> Delete </button> :  <CrearBooking /> }
-
-      <br />
-      { isAdm === true ? <EditHotel />  : <Comment /> } */}
-      
      </div>
   )
 }

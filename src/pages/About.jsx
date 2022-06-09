@@ -3,23 +3,23 @@ import React from 'react'
 function About() {
   return (
     <div>
-      <h3> About Us </h3>
+      <h3 id="subtitulo"> About Us </h3>
         <br/>
         <div>
-          <article>
+        <article class="index-articles">
             <h2>Carolina López</h2>
         <br/>
             <img src="" alt="Carolina Lóez" width="150px" />
         <br/>
-            <p>texto</p>
+        <p class="text">texto</p>
           </article>
 
-          <article>
+          <article class="index-articles">
             <h2>María Diez</h2>
         <br/>
             <img src="" alt="María Diez" width="150px" />
         <br/>
-            <p>texto</p>
+        <p class="text">texto</p>
           </article>
         </div>
       </div>
