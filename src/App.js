@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { Routes, Route } from "react-router";
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 //pages
 import Home from './pages/Home';
 import About from './pages/About';
@@ -11,6 +11,7 @@ import DetailsHotel from './pages/Hotel/DetailsHotel';
 import UserPerfil from './pages/auth/UserPerfil';
 
 import MyNavbar from "./components/MyNavbar"
+import Footer from './components/Footer';
 
 //pages => rutas error
 import Error from './pages/Error/Error';
@@ -32,7 +33,7 @@ function App() {
   return (
     <div className="App">
       <MyNavbar />
-     
+
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
@@ -52,7 +53,7 @@ function App() {
       </Routes>
 
 
-
+      <Footer />
 
     </div>
   );

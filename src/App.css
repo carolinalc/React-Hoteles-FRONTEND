@@ -1,9 +1,21 @@
 .App {
   text-align: center;
   align-items: center;
-  background-color: #F8E6CB;
-  height: 300vh;
+  background: #F8E6CB fixed;
+   
 }
+
+/* .footer{
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+} */
+
+/* .navbar{
+  position: fixed;
+  top: 0px;
+  width: 100%;
+} */
 
 .d-block {
  width: 700px;

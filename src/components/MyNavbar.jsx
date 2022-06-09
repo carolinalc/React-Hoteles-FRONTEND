@@ -20,9 +20,9 @@ function MyNavbar() {
 
 
   return (
-    <div>
+    <div className='navbar'>
       {isLogging === true ? (
-        <Navbar bg="light" variant="light" collapseOnSelect expand="lg">
+        <Navbar fixed="top"  bg="light" variant="light" collapseOnSelect expand="lg">
           <Container>
             <Navbar.Brand as={NavLink} to="/"> Home </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -37,7 +37,7 @@ function MyNavbar() {
           </Container>
         </Navbar>
       ) : (
-        <Navbar bg="light" variant="light" collapseOnSelect expand="lg">
+        <Navbar fixed="top"  bg="light" variant="light" collapseOnSelect expand="lg">
           <Container>
             <Navbar.Brand as={NavLink} to="/"> Home </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
