@@ -8,8 +8,8 @@ const getProfileData = () => {
     return service.get("/profile/user")
 }
 
-const getProfileEdit = ( updateProfile) => {
-    return service.patch(`/profile/edit`, updateProfile)
+const getProfileEdit = (_id, updateProfile) => {
+    return service.patch(`/profile/${_id}/edit`, updateProfile)
 }
 
 const getBookingProfile = () => {

@@ -33,7 +33,7 @@ function ListHotelTematico() {
         {
           detalleTematico.map((eachTematico) => {
             return (
-              <NavLink to={`/hotels/${eachTematico._id}`}> <li>{eachTematico.nombre} </li></NavLink>
+              <NavLink className="navlink" to={`/hotels/${eachTematico._id}`}> <li>{eachTematico.nombre} </li></NavLink>
             )        
           })
         }

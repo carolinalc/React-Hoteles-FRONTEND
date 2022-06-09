@@ -15,7 +15,7 @@ function EditPerfil() {
   
   const navigate = useNavigate()
 
-  const { id } = useParams()
+  const { _id } = useParams()
 
   const handleUserNameChange = (e) => setUserName(e.target.value)
   const handleEmailChange = (e) => setEmail(e.target.value)
@@ -43,7 +43,7 @@ function EditPerfil() {
 
     try {
 
-      const response = await getProfileData(id)
+      const response = await getProfileData()
      
       setUserName(response.data.username)
       setEmail(response.data.email)
@@ -67,9 +67,9 @@ function EditPerfil() {
 
     try {
 
-      const response = await getProfileEdit(id, updateProfile)
+      const response = await getProfileEdit(_id, updateProfile)
       console.log(response.data)
-      Navigate("/profile")
+      navigate("/profile")
       
     } catch (error) {
       navigate("/error")

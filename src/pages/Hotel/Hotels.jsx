@@ -7,6 +7,9 @@ import ListHotelCiudad from '../../components/ListHotelCategories/ListHotelCiuda
 import ListHotelResort from '../../components/ListHotelCategories/ListHotelResort'
 import ListHotelRural from '../../components/ListHotelCategories/ListHotelRural'
 import ListHotelTematico from '../../components/ListHotelCategories/ListHotelTematico'
+import Card from 'react-bootstrap/Card'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 //Componente a importar
 // import ListHotelCategori from "../components/ListHotelCategori"
@@ -41,27 +44,52 @@ function Hoteles() {
 
   return (
     <div> 
-     
-         <div>   
-            <img src={ciudadImage}  alt="hotelciudad" width={500} onClick={handleShowCiudad}/>
-             { showListCiudad === true && <ListHotelCiudad /> } 
-          </div>
 
-          <div>
-             <img src={resort} alt="hotelresort" width={500} onClick={handleShowResort}/>
-            { showListResort === true && <ListHotelResort /> }  
-          </div>
-
-          <div>
-            <img src={rural} alt="hotelrural" width={500} onClick={handleShowRural}/>
-            { showListRural === true && <ListHotelRural /> }               
-          </div>
-
-          <div>
-            <img src={tematico} alt="hoteltematico" width={500} onClick={handleShowTematico}/>
-            { showListTematico === true && <ListHotelTematico/> } 
-         </div>
-         {/* <ListHotelCategori getAllDetailsProps={getAllDetails}/> */}
+      <Row xs={4} md={2} className="g-4">
+        
+          <Col>
+            <Card>
+              <Card.Img variant="top" src={ciudadImage} alt="hotelciudad" width={500} onClick={handleShowCiudad} />
+              <Card.Body>
+                <Card.Text>
+                { showListCiudad === true && <ListHotelCiudad /> } 
+                </Card.Text>
+              </Card.Body>
+            </Card>
+            </Col>
+            <Col>
+            <Card>
+              <Card.Img variant="top" src={resort} alt="hotelresort" width={500} onClick={handleShowResort} />
+              <Card.Body>
+                <Card.Text>
+                { showListResort === true && <ListHotelResort /> } 
+                </Card.Text>
+              </Card.Body>
+            </Card> 
+            </Col>
+            <Col>          
+            <Card>
+              <Card.Img variant="top" src={rural} alt="hotelrural" width={500} onClick={handleShowRural} />
+              <Card.Body>
+                <Card.Text>
+                { showListRural === true && <ListHotelRural /> }
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col>          
+            <Card>
+              <Card.Img variant="top" src="https://res.cloudinary.com/dm5zetu40/image/upload/v1654092361/Imagen%20hoteles/Tem%C3%A1tico/download_yexhxo.jpg" 
+              alt="hoteltematico" width={500} onClick={handleShowTematico}/>
+              <Card.Body>
+                <Card.Text>
+                { showListTematico === true && <ListHotelTematico/> }
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+      
+      </Row>       
 
     </div>
   )
