@@ -3,6 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { DotLoader } from 'react-spinners'
 import { getComments } from '../../services/comment.services'
 
+import Card from "react-bootstrap/Card";
+
 function VerComments() {
 
     const [ listComment, setListComment] = useState(null)
@@ -32,14 +34,22 @@ function VerComments() {
 
   return (
     <div>
-        {listComment.map((each) =>{
-            return(
-                <div>
-                    <h3> {each.username}</h3>
-                    <h3> {each.valoracion}</h3>
-                    <h3> {each.comentario}</h3>
-                </div>
-            )})}
+        <Card style={{ width: '37.5rem' }}>
+            <Card.Body>
+                <br />
+                <Card.Title className="comment-title"><h4>COMMENTS</h4></Card.Title>
+                <Card.Text>
+                    {listComment.map((each) =>{
+                        return(
+                            <div key={each.comentario}>
+                                <hr />
+                                <p> <strong> Name: &nbsp; </strong> {each.clienteId.username} &nbsp; &nbsp; <strong> Rating: &nbsp; </strong> {each.valoracion}</p>
+                                <p> {each.comentario}</p>
+                            </div>
+                        )})}
+                </Card.Text>
+            </Card.Body>
+        </Card>
     </div>
   )
 }

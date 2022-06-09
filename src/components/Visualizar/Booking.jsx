@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { DotLoader } from 'react-spinners'
 import { getAllBooking } from '../../services/booking.services'
+import Card from "react-bootstrap/Card"
 
 
 
@@ -40,9 +41,13 @@ function Booking() {
       {details.map((each) =>{
         return(
         <div>
-
-          <Link className="navlink" to={`/booking/${each._id}/details`}><ul> <h2>{each.hotelId.nombre}</h2> </ul></Link>
-
+          <Card style={{ width: '30rem' }}>
+          <Card.Body>
+                <h3 className="name-hotels">USERS BOOKINGS</h3>
+                <br />
+                <Link className="navlink" to={`/booking/${each._id}/details`}><h5>{each.hotelId.nombre} </h5></Link>
+          </Card.Body>
+          </Card>
       </div>
         )
 

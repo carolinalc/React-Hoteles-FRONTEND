@@ -7,6 +7,7 @@ import { getProfileData } from "../../services/profile.services"
 import { useContext } from 'react'
 import { AuthContext } from "../../context/auth.context.jsx"
 import EditPerfil from '../../components/Profile/EditPerfil';
+import Card from "react-bootstrap/Card"
 
 
 function UserPerfil() {
@@ -46,20 +47,22 @@ function UserPerfil() {
 
   return (
     <div>
-       <h3>Profile</h3>
-              <img src={user.imagen} alt="imagenprofile" />
-              <br />
-              <p>Name: {user.username}</p>
-              <br />
-              <p>Email: {user.email}</p>
-              <button onClick={handleShowEdit}>Edit profile</button>
+      <Card style={{ width: '30rem' }}>
         <br />
+            <h3 className="name-hotels">PROFILE</h3>
+          <Card.Img variant="top" src={user.imagen} alt="imagenprofile"  />
+             <Card.Body>
+                  <br />
+                  <Card.Title>Name: &nbsp; {user.username} </Card.Title>
+                  <br />
+                  <Card.Title>Email: &nbsp; {user.email}</Card.Title>
+                  <br />
+                  <button onClick={handleShowEdit}>Edit profile</button>
+            <br />
         { showListEdit === true &&   <EditPerfil getUserDetails={getUserDetails}/> } 
-         
-
-        {  isAdm === true ?  <AdminBooking />  : <ClientBooking /> }
-
-        
+        </Card.Body>
+      </Card>   
+        {  isAdm === true ?  <AdminBooking />  : <ClientBooking /> }  
     </div>
   )
 }

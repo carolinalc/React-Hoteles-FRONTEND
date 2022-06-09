@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { DotLoader } from 'react-spinners'
 import { getBookingProfile } from '../../services/profile.services'
+import Card from "react-bootstrap/Card"
 
 function ClientBooking() {
 
@@ -35,14 +36,19 @@ function ClientBooking() {
     <div>
       {dataBooking.map((each) =>{
         return(
-
           <div>
-            {each.hotelId.nombre}
-            {each.fechaEntrada}
-            {each.fechaSalida}
-            {each.huespedes}
-            {each.checkin}
-            {each.comentarios}
+             <Card style={{ width: '30rem' }}>
+                <Card.Body>
+                <Card.Title><h3 className="name-bookings">BOOKING</h3></Card.Title>
+                <hr /> 
+                <p><strong>Name Hotel: </strong> &nbsp;  {each.hotelId.nombre} </p>
+                <p><strong>Date In: </strong> &nbsp;  {each.fechaEntrada} </p>
+                <p><strong>Date Out: </strong> &nbsp;   {each.fechaSalida}</p>  
+                <p><strong>Guests: </strong> &nbsp; {each.huespedes} </p>  
+                <p><strong>Check-In Time: </strong> &nbsp; {each.checkin} </p>
+                <p><strong>Comments: </strong> &nbsp; {each.comentarios} </p>    
+                </Card.Body>
+             </Card>
           </div>
 
         )})}

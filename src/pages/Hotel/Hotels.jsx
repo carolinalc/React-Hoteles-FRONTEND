@@ -49,6 +49,8 @@ function Hoteles() {
         
           <Col>
             <Card>
+              <br />
+              <h2 className="name-hotels">CITY HOTELS</h2>
               <Card.Img variant="top" src={ciudadImage} alt="hotelciudad" width={500} onClick={handleShowCiudad} />
               <Card.Body>
                 <Card.Text>
@@ -59,6 +61,8 @@ function Hoteles() {
             </Col>
             <Col>
             <Card>
+            <br />
+            <h2 className="name-hotels">RESORT HOTELS</h2>
               <Card.Img variant="top" src={resort} alt="hotelresort" width={500} onClick={handleShowResort} />
               <Card.Body>
                 <Card.Text>
@@ -69,6 +73,8 @@ function Hoteles() {
             </Col>
             <Col>          
             <Card>
+            <br />
+            <h2 className="name-hotels">RUTAL HOTELS</h2>
               <Card.Img variant="top" src={rural} alt="hotelrural" width={500} onClick={handleShowRural} />
               <Card.Body>
                 <Card.Text>
@@ -79,6 +85,8 @@ function Hoteles() {
           </Col>
           <Col>          
             <Card>
+              <br />
+            <h2 className="name-hotels">THEMATIC HOTELS</h2>
               <Card.Img variant="top" src="https://res.cloudinary.com/dm5zetu40/image/upload/v1654092361/Imagen%20hoteles/Tem%C3%A1tico/download_yexhxo.jpg" 
               alt="hoteltematico" width={500} onClick={handleShowTematico}/>
               <Card.Body>
