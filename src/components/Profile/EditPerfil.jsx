@@ -7,7 +7,7 @@ import { getProfileData, getProfileEdit } from '../../services/profile.services'
 
 
 
-function EditPerfil() {
+function EditPerfil(props) {
 
   const [ username, setUserName] = useState("");
   const [ imagen, setImagen ] = useState("");
@@ -44,6 +44,7 @@ function EditPerfil() {
     try {
 
       const response = await getProfileData()
+      console.log(response.data)
      
       setUserName(response.data.username)
       setEmail(response.data.email)
@@ -69,7 +70,7 @@ function EditPerfil() {
 
       const response = await getProfileEdit(_id, updateProfile)
       console.log(response.data)
-      navigate("/profile")
+      props.getUserDetails()
       
     } catch (error) {
       navigate("/error")

@@ -54,7 +54,7 @@ function UserPerfil() {
               <p>Email: {user.email}</p>
               <button onClick={handleShowEdit}>Edit profile</button>
         <br />
-        { showListEdit === true &&   <EditPerfil /> } 
+        { showListEdit === true &&   <EditPerfil getUserDetails={getUserDetails}/> } 
          
 
         {  isAdm === true ?  <AdminBooking />  : <ClientBooking /> }

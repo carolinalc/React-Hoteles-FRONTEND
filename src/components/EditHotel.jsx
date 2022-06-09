@@ -188,7 +188,7 @@ function EditHotel() {
            />
            <br />
            <br />
-           <label htmlFor="imagen"><strong>Image:</strong>Image: &nbsp; </label>
+           <label htmlFor="imagen"><strong>Image:</strong> &nbsp; </label>
            <input type="file"
               name='imagen'
               onChange={handleImagenChange}

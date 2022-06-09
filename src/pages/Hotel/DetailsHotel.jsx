@@ -72,7 +72,7 @@ function DetailsHotel() {
     <div>
       <br />
       <Card>
-      <Card.Img variant="top" src={details.imagen} alt="imagenHotel" width={50} />
+      <Card.Img variant="top" src={details.imagen} alt="imagenHotel" />
         <Card.Body>
           <Card.Text>
               <h2>{details.nombre}</h2> 
