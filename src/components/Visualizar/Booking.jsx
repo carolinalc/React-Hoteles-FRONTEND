@@ -41,7 +41,7 @@ function Booking() {
         return(
         <div>
 
-          <Link to={`/booking/${each._id}/details`}><ul> <h2>{each.hotelId.nombre}</h2> </ul></Link>
+          <Link className="navlink" to={`/booking/${each._id}/details`}><ul> <h2>{each.hotelId.nombre}</h2> </ul></Link>
 
       </div>
         )

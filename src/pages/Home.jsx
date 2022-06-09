@@ -6,7 +6,7 @@ function Home() {
   return (
     <div>
       
-      <h1>Wellcome to the React Hotel</h1>
+      <h1 className='titleHome'>Wellcome to the React Hotel</h1>
       <Carousel className="carousel" fade="true">
           <Carousel.Item >
                 <img

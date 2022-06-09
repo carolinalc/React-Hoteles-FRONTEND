@@ -28,7 +28,7 @@ function MyNavbar() {
               <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto">
-                    <Nav.Link as={NavLink} to="/about" >A bout </Nav.Link>
+                    <Nav.Link as={NavLink} to="/about" >About </Nav.Link>
                     <Nav.Link as={NavLink} to="/hotels" > Hoteles </Nav.Link>
                     <Nav.Link as={NavLink} to="/profile" > Perfil </Nav.Link>
                 <Nav.Link onClick={handleLogout}> Logout </Nav.Link>

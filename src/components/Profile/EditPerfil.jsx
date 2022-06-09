@@ -6,7 +6,7 @@ import { getProfileData, getProfileEdit } from '../../services/profile.services'
 
 
 
-function EditPerfil() {
+function EditPerfil(props) {
 
   const [ username, setUserName] = useState("");
   const [ imagen, setImagen ] = useState("");
@@ -14,7 +14,7 @@ function EditPerfil() {
   
   const navigate = useNavigate()
 
-  const { id } = useParams()
+  const { _id } = useParams()
 
   const handleUserNameChange = (e) => setUserName(e.target.value)
   const handleEmailChange = (e) => setEmail(e.target.value)
@@ -42,7 +42,8 @@ function EditPerfil() {
 
     try {
 
-      const response = await getProfileData(id)
+      const response = await getProfileData()
+      console.log(response.data)
      
       setUserName(response.data.username)
       setEmail(response.data.email)
@@ -66,9 +67,9 @@ function EditPerfil() {
 
     try {
 
-      const response = await getProfileEdit(id, updateProfile)
+      const response = await getProfileEdit(_id, updateProfile)
       console.log(response.data)
-      Navigate("/profile")
+      props.getUserDetails()
       
     } catch (error) {
       navigate("/error")

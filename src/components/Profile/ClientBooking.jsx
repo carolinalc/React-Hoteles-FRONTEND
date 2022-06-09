@@ -19,6 +19,7 @@ function ClientBooking() {
 
       const response = await getBookingProfile()
       setDataBooking(response.data)
+      console.log(response.data)
       
     } catch (error) {
       navigate("/error")
