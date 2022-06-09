@@ -66,17 +66,6 @@ function Comment() {
       <Form onSubmit={handleCreateComment} style={{ width: "50%" }}>
         <br />
         <Form.Group>
-          <Form.Label htmlFor="comment">Comment: </Form.Label>
-          <Form.Control
-            as="textarea"
-            type="text"
-            name='comment'
-            onChange={handleComentarioChange}
-            value={comentario}
-          />
-        </Form.Group>
-        <br />
-        <Form.Group>
           <Form.Label htmlFor="valoracion">Rating: </Form.Label>
           <Form.Select type="text"
             name='valoracion'
@@ -89,6 +78,17 @@ function Comment() {
               )
             })}
           </Form.Select>
+        </Form.Group>
+        <br />
+        <Form.Group>
+          <Form.Label htmlFor="comment">Comment: </Form.Label>
+          <Form.Control
+            as="textarea"
+            type="text"
+            name='comment'
+            onChange={handleComentarioChange}
+            value={comentario}
+          />
         </Form.Group>
         <br />
         <Button type='submit'>Add Comment</Button>

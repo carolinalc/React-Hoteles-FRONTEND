@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import ciudadImage from "../../imagen/cuidad.jpg"
 import resort from "../../imagen/resort.jpg"
-import tematico from "../../imagen/tematico.jpg"
 import rural from "../../imagen/rural.jpg"
 import ListHotelCiudad from '../../components/ListHotelCategories/ListHotelCiudad'
 import ListHotelResort from '../../components/ListHotelCategories/ListHotelResort'
@@ -74,7 +73,7 @@ function Hoteles() {
             <Col>          
             <Card>
             <br />
-            <h2 className="name-hotels">RUTAL HOTELS</h2>
+            <h2 className="name-hotels">RURAL HOTELS</h2>
               <Card.Img variant="top" src={rural} alt="hotelrural" width={500} onClick={handleShowRural} />
               <Card.Body>
                 <Card.Text>

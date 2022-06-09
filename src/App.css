@@ -1,24 +1,47 @@
 body{
-  height: 100vh !important;
+  
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+
+}
+
+#root{
+background-color: #F8E6CB;
+min-height: 100vh !important;
 }
 
 .App {
   text-align: center;
   align-items: center;
-  background: #F8E6CB fixed;
+  
   height: 100% !important;
 }
 
-#root{
-height: 100% !important;
+.paginaApp{
+  min-height: 90vh;
 }
 
-.footer{
-  position: fixed;
-  bottom: 0px;
-  align-content: center;
+.imgAbout{
+  width: 200px;
+}
+.imgAboutMaria{
+  width: 230px;
 }
 
+.createLink{
+  color: white;
+  text-decoration: none;
+}
+
+.footer {
+  text-align: center;
+  padding-top: 5px;
+  width: 100%;
+  height: 40px;
+  color: black;
+  background-color: whitesmoke;
+}
 
 .navbar{
   margin-bottom: 50px;
@@ -152,10 +175,7 @@ Button{
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-body {
-  background-color: #f4f4f4;
-  margin-bottom: 50px;
-}
+
 html, button, input, select, textarea {
     font-family: 'Montserrat', Helvetica, sans-serif;
     color: #FCC872;
@@ -267,12 +287,4 @@ img {
   color: #7ACE67;
 }
 
-footer {
-  text-align: center;
-  padding-top: 5px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 40px;
-  color: black;
-}
+

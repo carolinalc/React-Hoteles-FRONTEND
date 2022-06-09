@@ -7,7 +7,7 @@ function AdminBooking() {
 
   return (
     <div>    
-          <Button><Link className="navlink" to="/hotels/create"> Create a New Hotel </Link></Button>
+          <Button><Link className="createLink" to="/hotels/create"> Create a New Hotel </Link></Button>
              <Booking/>  
     </div>  
   )

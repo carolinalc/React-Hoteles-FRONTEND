@@ -33,7 +33,7 @@ function App() {
   return (
     <div className="App">
       <MyNavbar />
-
+      <div className='paginaApp'>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
@@ -52,7 +52,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
 
-
+      </div>
       <Footer />
 
     </div>
