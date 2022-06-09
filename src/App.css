@@ -2,7 +2,7 @@
   text-align: center;
   align-items: center;
   background-color: #F8E6CB;
- height: 120vh;
+  height: 300vh;
 }
 
 .d-block {
@@ -29,6 +29,7 @@ margin-top: 30px;
 button{
   border-radius: 10px;
   background-color:rgb(255, 255, 255);
+  margin: 10px;
 }
 /* CSS */
 
@@ -190,4 +191,23 @@ a.more-link {
 
 .text {
   width: 60%;
+}
+
+.card-img-top {
+  display: block;
+  margin: 25px auto;
+  justify-content: center;
+  width: 300px;
+}
+
+.card {
+  display: block;
+  margin: 25px auto;
+  justify-content: center;
+  width: 600px;
+}
+
+img {
+  width: 75px;
+  margin: 25px auto;
 }
