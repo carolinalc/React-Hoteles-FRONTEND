@@ -11,7 +11,6 @@
  margin-top: 50px;
 }
 
-<<<<<<< HEAD
 /* CSS */
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700');
@@ -148,7 +147,28 @@ a.more-link {
   margin-top: 50px;
   letter-spacing: 1px;
 }
-=======
 
+#subtitulo {
+  font-size: 1.6em;
+  font-weight: 700;
+  text-align: center;
+  color: #97DBAE;
+  padding-bottom: 25px;
+}
 
->>>>>>> a80d4f5266e336af5ef414556eb1858e8453dc7d
+.index-articles h2 {
+  font-size: 1.3em;
+  font-weight: 900;
+  font-style: italic;
+}
+.index-articles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 60px;
+  width: 50%;
+}
+
+.text {
+  width: 60%;
+}
