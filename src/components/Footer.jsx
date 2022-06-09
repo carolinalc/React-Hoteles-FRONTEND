@@ -7,15 +7,9 @@ function Footer() {
   return (
     <div className='footer'>
 
-
-        
-        <Card fixed="bottom" >
-        <Card.Footer >
-           <p>React Hotel by María Díez & Carolina López. 
-            Know more <NavLink to="/about">About Us</NavLink></p>
-        </Card.Footer>
-        </Card>
-
+      <footer>
+         <p>React Hotel by <span class="negrita">María Diez</span> & <span class="negrita">Carolina López.</span><span>Know more <NavLink to="/about">About Us</NavLink> </span> </p>
+      </footer>
     </div>
   )
 }
