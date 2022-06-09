@@ -12,6 +12,7 @@ import EditPerfil from '../../components/Profile/EditPerfil';
 function UserPerfil() {
 
   const [ user, setUser] = useState(null);
+  const [ showListEdit, setShowListEdit ] = useState(false)
   const { _id } = useParams();
 
   const { isAdm } = useContext(AuthContext)
@@ -34,6 +35,11 @@ function UserPerfil() {
     }
   }
 
+  const handleShowEdit = ()=> {
+    setShowListEdit(!showListEdit)
+    
+  }
+
   if(user === null){
     return <DotLoader />
   }
@@ -46,10 +52,10 @@ function UserPerfil() {
               <p>Name: {user.username}</p>
               <br />
               <p>Email: {user.email}</p>
-              <button>Edit profile</button>
+              <button onClick={handleShowEdit}>Edit profile</button>
         <br />
-
-          <EditPerfil />
+        { showListEdit === true &&   <EditPerfil /> } 
+         
 
         {  isAdm === true ?  <AdminBooking />  : <ClientBooking /> }
 
