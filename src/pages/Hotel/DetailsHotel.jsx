@@ -70,6 +70,7 @@ function DetailsHotel() {
 
   return (
     <div>
+      <br />
       <Card>
       <Card.Img variant="top" src={details.imagen} alt="imagenHotel" width={50} />
         <Card.Body>
@@ -78,15 +79,14 @@ function DetailsHotel() {
               <br />
               <p>{details.estrellas}</p>
               <br />
-              <p>{details.categorias}</p>
+              <strong></strong>
+              <p> <strong>Categories: </strong> &nbsp; {details.categorias}</p>
               <br />
-              <p>{details.ubicacion}</p>
+              <p><strong> Location: </strong> &nbsp;  {details.ubicacion}</p>
               <br />
-              <p>{details.precios}</p>
+              <p><strong> Prices: </strong> &nbsp; {details.precios} € &nbsp; &nbsp; &nbsp; <strong> Pension: </strong> &nbsp; {details.pension} </p>
               <br />
-              <p>{details.pension}</p>
-              <br />
-              <p>{details.descripcion}</p>
+              <p><strong> Description: </strong> &nbsp; {details.descripcion}</p>
               <br />
           </Card.Text>
         </Card.Body>

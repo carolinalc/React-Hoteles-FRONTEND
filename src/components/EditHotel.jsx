@@ -123,23 +123,26 @@ function EditHotel() {
     }
 
   return (
-    <div>
+    <div> <strong></strong>
+      <br />
       <form onSubmit={handleSubmit}>
-          <label htmlFor="nombre">Name: </label>
+          <label htmlFor="nombre"><strong> Name: </strong> &nbsp; </label>
           <input type="text"
            name='nombre'
            onChange={handleNameChange}
            value={nombre} 
            />
            <br />
-           <label htmlFor="estrellas">Starts: </label>
+           <br />
+           <label htmlFor="estrellas"><strong>Starts: </strong> &nbsp; </label>
           <input type="text"
            name='estrellas'
            onChange={handleEstrellasChange}
            value={estrellas} 
            />
            <br />
-           <label htmlFor="categorias">Categories: </label>
+           <br />
+           <label htmlFor="categorias"><strong> Categories: </strong> &nbsp; </label>
           <select type="text"
            name='categorias'
            onChange={handleCategoriasChange}> 
@@ -148,22 +151,25 @@ function EditHotel() {
                   <option value={eachCategoria}> {eachCategoria} </option>   
                 )  })}   
           </select>
+          <br />
            <br />
-           <label htmlFor="ubicacion">Ubication: </label>
+           <label htmlFor="ubicacion"><strong> Ubication:</strong> &nbsp; </label>
           <input type="text"
            name='ubicacion'
            onChange={handleUbicacionChange}
            value={ubicacion} 
            />
+          <br />
            <br />
-           <label htmlFor="precios">Prices: </label>
+           <label htmlFor="precios"><strong>Prices: </strong>&nbsp; </label>
           <input type="number"
            name='precios'
            onChange={handlePreciosChange}
            value={precios} 
            />
+          <br />
            <br />
-           <label htmlFor="pension">Pension: </label>
+           <label htmlFor="pension"><strong> Pension:</strong> &nbsp; </label>
           <select type="text"
            name='pension'
            onChange={handlePensionChange}>
@@ -173,15 +179,16 @@ function EditHotel() {
                 )  })}  
            </select>
            <br />
-           <label htmlFor="descripcion">Description: </label>
+           <br />
+           <label htmlFor="descripcion"><strong>Description:</strong> &nbsp; </label>
           <input type="text"
            name='descripcion'
            onChange={handleDescripcionChange}
            value={descripcion} 
            />
-           
            <br />
-           <label htmlFor="imagen">Image: </label>
+           <br />
+           <label htmlFor="imagen"><strong>Image:</strong>Image: &nbsp; </label>
            <input type="file"
               name='imagen'
               onChange={handleImagenChange}
