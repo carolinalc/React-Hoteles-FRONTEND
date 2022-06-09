@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, Navigate, useParams } from 'react-router-dom';
 import { DotLoader } from 'react-spinners';
-import { AuthContext } from '../../context/auth.context';
 import { uploadService } from '../../services/hotels.services';
 import { getProfileData, getProfileEdit } from '../../services/profile.services';
 
