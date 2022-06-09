@@ -9,6 +9,7 @@ import Comment from '../../components/Comment'
 import CrearBooking from '../../components/CrearBooking'
 import VerComments from '../../components/Visualizar/VerComments'
 import Card from "react-bootstrap/Card"
+import Button from 'react-bootstrap/Button';
 
 function DetailsHotel() {
 
@@ -94,10 +95,10 @@ function DetailsHotel() {
       
           <div><VerComments /></div> 
 
-      { isAdm === true ? <button onClick={handleDelete}> Delete </button> :  <button onClick={handleShowDelete}>Booking</button> }
+      { isAdm === true ? <Button onClick={handleDelete}> Delete </Button> :  <Button onClick={handleShowDelete}>Booking</Button> }
       { showListDelete === true &&  <CrearBooking /> } 
       <br />
-      { isAdm === true ? <button onClick={handleShowEdit}> Edit </button>  : <button onClick={handleShowComment}> Comment </button> }
+      { isAdm === true ? <Button onClick={handleShowEdit}> Edit </Button>  : <Button onClick={handleShowComment}> Comment </Button> }
       { showListEdit === true && <EditHotel /> } 
       { showListComment === true && <Comment />} 
 

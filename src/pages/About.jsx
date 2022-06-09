@@ -3,9 +3,9 @@ import React from 'react'
 function About() {
   return (
     <div>
-      <h3 id="subtitulo"> About Us </h3>
+      <h3 className="name-hotels"> About Us </h3>
         <br/>
-        <div>
+        <div id="index-bg-about">
         <article class="index-articles">
             <h2>Carolina López</h2>
         <br/>

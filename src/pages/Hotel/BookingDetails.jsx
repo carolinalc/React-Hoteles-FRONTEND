@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { DotLoader } from 'react-spinners'
 import {getBookingDetails, deleteBooking} from '../../services/booking.services'
+import Button from 'react-bootstrap/Button';
+
 
 function BookingDetails() {
 
@@ -58,7 +60,7 @@ function BookingDetails() {
           <br />
           <h2>{details.comentarios}</h2>
 
-         <button onClick={handleDelete}> Delete </button> 
+         <Button onClick={handleDelete}> Delete </Button> 
 
     </div>
   )

@@ -96,6 +96,7 @@ function CreateHotel() {
 
   return (
     <div style={{ display: "flex", alignItems: "center", flexDirection: "column" }}>
+      <br />
       <h3>Create a new Hotel</h3>
       <Form onSubmit={handleSubmit} style={{ width: "50%" }}>
         <Form.Group>
@@ -176,7 +177,7 @@ function CreateHotel() {
             onChange={handleImagenChange}
           />
         </Form.Group>
-        <Button type='submit'> Create</Button>
+        <Button type='submit'> Create </Button>
       </Form>
 
       <img src={imagen} alt="imagenedit" />

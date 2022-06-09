@@ -8,6 +8,7 @@ import { useContext } from 'react'
 import { AuthContext } from "../../context/auth.context.jsx"
 import EditPerfil from '../../components/Profile/EditPerfil';
 import Card from "react-bootstrap/Card"
+import Button from 'react-bootstrap/Button';
 
 
 function UserPerfil() {
@@ -57,7 +58,7 @@ function UserPerfil() {
                   <br />
                   <Card.Title>Email: &nbsp; {user.email}</Card.Title>
                   <br />
-                  <button onClick={handleShowEdit}>Edit profile</button>
+                  <Button onClick={handleShowEdit}>Edit profile</Button>
             <br />
         { showListEdit === true &&   <EditPerfil getUserDetails={getUserDetails}/> } 
         </Card.Body>
