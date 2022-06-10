@@ -10,7 +10,7 @@ function About() {
             <h2>Carolina López</h2>
             <img className="imgAbout" src="https://res.cloudinary.com/dm5zetu40/image/upload/v1654792690/Imagen%20hoteles/20220113_101211_c3mxju.jpg" alt="Carolina López" />
       
-        <p class="text">Mi nombre es Carolina y soy almeriense almeriense. María y yo compartimos la pasión de viajar, y decidimos gestionar hoteles.</p>
+        <p class="text">Mi nombre es Carolina y soy almeriense. María y yo compartimos la pasión de viajar, y decidimos gestionar hoteles.</p>
           </article>
 
           <article className="index-articles">
